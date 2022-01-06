@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Cálculo de Metais</title>
+</head>
+
+<body>
+    <section class='measurement-calculator'>
+        <div class='measurement-calculator__title'>
+            <button class='title'>CÁLCULO DE PESOS E MEDIDAS</button>
+        </div>
+        <div class='measurement-calculator__body'>
+            <div class='products-options'>
+                <div class='square-bar'>
+                    <button class='square-bar__head' onclick="handleShowCalculationContainer('square-bar__calculation-container')">
+                        <img class='square-bar__head__image' src='./assets/barra-quadrada.png'>
+                        <p class='square-bar__head__description'>Barras Quadradas</p>
+                    </button>
+                    <div hidden transition class='square-bar__calculation-container'>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>Material</p>
+                                    </td>
+                                    <td>
+                                        <select class='square-material' name="select">
+                                            <option value="aluminio">Alumínio</option>
+                                            <option value="cobre">Cobre</option>
+                                            <option value="bronze">Bronze</option>
+                                            <option value="latao">Latão</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Largura (mm)</p>
+                                    </td>
+                                    <td>
+                                        <input class='square-value' type="number"></input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Comprimento (m)</p>
+                                    </td>
+                                    <td>
+                                        <input value="1" class='square-length' type="number"></input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Quantidade (un)</p>
+                                    </td>
+                                    <td>
+                                        <input value="1" class='square-amount' type="number"></input>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id='show-result-square'></div>
+                        <button onclick='handleCalculationWeight("square")'>Calcular</button>
+                    </div>
+                </div>
+                <div class='round-bar'>
+                    <button class='round-bar__head' onclick="handleShowCalculationContainer('round-bar__calculation-container')">
+                        <img class='round-bar__head__image' src='./assets/barra-redonda.png'>
+                        <p class='round-bar__head__description'>Barras Redondas</p>
+                    </button>
+                    <div hidden class='round-bar__calculation-container'>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>Material</p>
+                                    </td>
+                                    <td>
+                                        <select class='round-material' name="select">
+                                            <option value="aluminio">Alumínio</option>
+                                            <option value="cobre">Cobre</option>
+                                            <option value="bronze">Bronze</option>
+                                            <option value="latao">Latão</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Diâmetro (mm)</p>
+                                    </td>
+                                    <td>
+                                        <input class='round-value' type="number"></input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Comprimento (m)</p>
+                                    </td>
+                                    <td>
+                                        <input value="1" class='round-length' type="number"></input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Quantidade (un)</p>
+                                    </td>
+                                    <td>
+                                        <input value="1" class='round-amount' type="number"></input>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id='show-result-round'></div>
+                        <button  onclick='handleCalculationWeight("round")'>Calcular</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>
