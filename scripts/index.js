@@ -25,7 +25,7 @@ class CalculationArea {
       return;
     });
     const barWeight = squareArea * takeMaterialWeight[0].value * this.amount;
-    return (Math.round(barWeight));
+    return (barWeight);
   }
 
   materialWeightWithRoundBar() {
@@ -38,7 +38,7 @@ class CalculationArea {
       return;
     });
     const barWeight = roundArea * takeMaterialWeight[0].value * this.amount;
-    return (Math.round(barWeight));
+    return (barWeight);
   }
 }
 
@@ -54,12 +54,12 @@ function handleCalculationWeight(bar) {
     case "square":
       document
         .getElementById(`show-result-${bar}`)
-        .innerHTML = `Peso total: ${newBar.materialWeightWithSquareBar()} Kg`;
+        .innerHTML = `<b>Peso total: ${newBar.materialWeightWithSquareBar()} Kg</b>`;
       break;
     case "round":
         document
         .getElementById(`show-result-${bar}`)
-        .innerHTML = `Peso total: ${newBar.materialWeightWithRoundBar()} Kg`;
+        .innerHTML = `<b>Peso total: ${newBar.materialWeightWithRoundBar()} Kg</b>`;
       break;
     default:
       alert("Erro ao Calcular os Quantitativos");
