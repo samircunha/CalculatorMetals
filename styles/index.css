@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid gray;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background-color: white;
   padding: 10px;
@@ -72,4 +72,45 @@ body {
   padding: 10px;
   border: none;
   border-radius: 5px;
+}
+
+.material-button{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 30px; 
+  border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.material-button__buttons{
+  padding: 5px;
+  width: 90px;
+  border: none;
+  background-color: white;
+  transition: all 0.5s;
+}
+
+.material-button__buttons:hover{
+  color: white;
+  border-radius: 3px;
+  padding: 5px;
+  transition: all 0.5s;
+}
+
+.button-aluminio:hover{
+  background-color: #8f8f8f;
+}
+
+.button-cobre:hover{
+  background-color: #B5A642;
+}
+
+.button-bronze:hover{
+  background-color: #DB9370;
+}
+
+.button-latao:hover{
+  background-color: #947549;
 }

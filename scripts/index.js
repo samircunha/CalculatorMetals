@@ -1,14 +1,14 @@
+let materialSelected = '';
+
 class CalculationArea {
-  constructor(type, material, value, length, amount) {
+  constructor(type, material, value) {
     (this.type = type),
       (this.material = material),
-      (this.value = value),
-      (this.length = length),
-      (this.amount = amount);
+      (this.value = value)
   }
 
   metals = [
-    { material: "aluminio", value: 2.71 / 1000 },
+    { material: "aluminio", value: 2.70 / 1000 },
     { material: "bronze", value: 8.7 / 1000 },
     { material: "cobre", value: 8.93 / 1000 },
     { material: "latao", value: 8.7 / 1000 },
@@ -17,38 +17,36 @@ class CalculationArea {
   pi = 3.14;
 
   materialWeightWithSquareBar() {
-    const squareArea = Math.pow(this.value / 10, 2) * (this.length * 100);
+    const squareArea = Math.pow(this.value / 10, 2) * 100;
     const takeMaterialWeight = this.metals.filter((metal) => {
       if (metal.material == this.material) {
         return metal;
       }
       return;
     });
-    const barWeight = squareArea * takeMaterialWeight[0].value * this.amount;
+    const barWeight = squareArea * takeMaterialWeight[0].value;
     return (barWeight);
   }
 
   materialWeightWithRoundBar() {
     const roundArea =
-      Math.pow(this.value / 10 / 2, 2) * (this.length * 100) * this.pi;
+      Math.pow(this.value / 10 / 2, 2) * 100 * this.pi;
     const takeMaterialWeight = this.metals.filter((metal) => {
       if (metal.material == this.material) {
         return metal;
       }
       return;
     });
-    const barWeight = roundArea * takeMaterialWeight[0].value * this.amount;
+    const barWeight = roundArea * takeMaterialWeight[0].value;
     return (barWeight);
   }
 }
 
 function handleCalculationWeight(bar) {
-  const material = document.querySelector("." + bar + "-material").value;
+  const material = materialSelected;
   const value = document.querySelector("." + bar + "-value").value;
-  const length = Number(document.querySelector("." + bar + "-length").value);
-  const amount = Number(document.querySelector("." + bar + "-amount").value);
 
-  const newBar = new CalculationArea(bar, material, value, length, amount);
+  const newBar = new CalculationArea(bar, material, value);
 
   switch (bar) {
     case "square":
@@ -69,4 +67,8 @@ function handleCalculationWeight(bar) {
 
 function handleShowCalculationContainer(attribute) {
   document.querySelector("." + attribute).toggleAttribute("hidden");
+}
+
+function handleSelectMaterial (material) {
+  materialSelected = material;
 }
