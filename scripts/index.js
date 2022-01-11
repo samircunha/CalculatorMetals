@@ -1,4 +1,5 @@
 let materialSelected = '';
+let materialButtonSelected = '';
 
 class CalculationArea {
   constructor(type, material, value) {
@@ -70,5 +71,10 @@ function handleShowCalculationContainer(attribute) {
 }
 
 function handleSelectMaterial (material) {
+  if(materialButtonSelected.button != document.querySelector(".button-" + material) && materialSelected != ''){
+    materialButtonSelected.button.setAttribute('class', `material-button__buttons button-${materialButtonSelected.type}`);
+  } 
   materialSelected = material;
+  materialButtonSelected = {button: document.querySelector(".button-" + material), type: material};
+  materialButtonSelected.button.setAttribute('class', `material-button__buttons button-${material} button-${material}-active`);
 }

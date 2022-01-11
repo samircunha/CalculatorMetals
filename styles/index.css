@@ -92,25 +92,25 @@ body {
   transition: all 0.5s;
 }
 
-.material-button__buttons:hover{
+.material-button__buttons:hover, .button-aluminio-active, .button-cobre-active, .button-bronze-active, .button-latao-active {
   color: white;
   border-radius: 3px;
   padding: 5px;
   transition: all 0.5s;
 }
 
-.button-aluminio:hover{
+.button-aluminio:hover, .button-aluminio-active{
   background-color: #8f8f8f;
 }
 
-.button-cobre:hover{
+.button-cobre:hover, .button-cobre-active{
   background-color: #B5A642;
 }
 
-.button-bronze:hover{
+.button-bronze:hover, .button-bronze-active{
   background-color: #DB9370;
 }
 
-.button-latao:hover{
+.button-latao:hover, .button-latao-active{
   background-color: #947549;
 }
