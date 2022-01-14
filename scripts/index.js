@@ -1,5 +1,6 @@
 let materialSelected = '';
 let materialButtonSelected = '';
+let checkHidden = {lastOpen: '', bartype:'', status: 'close'};
 
 class CalculationArea {
   constructor(type, material, value) {
@@ -66,8 +67,24 @@ function handleCalculationWeight(bar) {
   }
 }
 
-function handleShowCalculationContainer(attribute) {
-  document.querySelector("." + attribute).toggleAttribute("hidden");
+function handleShowCalculationContainer({calulationContainerBar, barType}) {
+  toggleNavBar(calulationContainerBar, barType);
+}
+
+function toggleHidden (classCalculationContainerBar, time) {
+  setTimeout(()=>{
+    document.querySelector("." + classCalculationContainerBar).toggleAttribute("hidden");
+  }, time)
+}
+
+function toggleNavBar (classCalculationContainerBar, barType) {
+   if (document.querySelector(`.${barType}`).classList[1] == "open-nav-bars"){
+    document.querySelector(`.${barType}`).setAttribute("class", `${barType} close-nav-bars`);
+    toggleHidden (classCalculationContainerBar, 0);
+  } else {
+    document.querySelector(`.${barType}`).setAttribute("class", `${barType} open-nav-bars`);
+    toggleHidden (classCalculationContainerBar, 300);
+  }
 }
 
 function handleSelectMaterial (material) {

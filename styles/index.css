@@ -57,7 +57,7 @@ body {
 }
 
 .square-bar__calculation-container{
-    transition: transform ease-out 1s;
+  transition: transform ease-out 1s;
 }
 
 
@@ -113,4 +113,26 @@ body {
 
 .button-latao:hover, .button-latao-active{
   background-color: #947549;
+}
+
+@keyframes openNav{
+  from {height: 50px;}
+  to{height: 165px;}
+} 
+
+@keyframes closeNav{
+  from {height: 165px;}
+  to{height: 50px;}
+} 
+
+.open-nav-bars{
+  animation-name: openNav;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.close-nav-bars{
+  animation-name: closeNav;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
 }

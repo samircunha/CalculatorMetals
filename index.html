@@ -24,11 +24,11 @@
         <div class='measurement-calculator__body'>
             <div class='products-options'>
                 <div class='square-bar'>
-                    <button class='square-bar__head' onclick="handleShowCalculationContainer('square-bar__calculation-container')">
+                    <button class='square-bar__head' onclick="handleShowCalculationContainer({calulationContainerBar: 'square-bar__calculation-container', barType: 'square-bar'})">
                         <img class='square-bar__head__image' src='./assets/barra-quadrada.png'>
                         <p class='square-bar__head__description'>Barras Quadradas</p>
                     </button>
-                    <div hidden transition class='square-bar__calculation-container'>
+                    <div hidden class='square-bar__calculation-container'>
                         <table>
                             <tbody>
                                 <tr>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class='round-bar'>
-                    <button class='round-bar__head' onclick="handleShowCalculationContainer('round-bar__calculation-container')">
+                    <button class='round-bar__head' onclick="handleShowCalculationContainer({calulationContainerBar: 'round-bar__calculation-container', barType: 'round-bar'})">
                         <img class='round-bar__head__image' src='./assets/barra-redonda.png'>
                         <p class='round-bar__head__description'>Barras Redondas</p>
                     </button>
