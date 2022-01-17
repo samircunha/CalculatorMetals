@@ -1,6 +1,6 @@
 let materialSelected = '';
 let materialButtonSelected = '';
-let checkHidden = {lastOpen: '', bartype:'', status: 'close'};
+let checkOpenedNav = {status: 'close', openedNav: {classNavOpened: '', barTypeOpened: ''}};
 
 class CalculationArea {
   constructor(type, material, value) {
@@ -14,6 +14,7 @@ class CalculationArea {
     { material: "bronze", value: 8.7 / 1000 },
     { material: "cobre", value: 8.93 / 1000 },
     { material: "latao", value: 8.7 / 1000 },
+    { material: "acoinox", value: 7.9 / 1000 },
   ];
 
   pi = 3.14;
@@ -78,12 +79,23 @@ function toggleHidden (classCalculationContainerBar, time) {
 }
 
 function toggleNavBar (classCalculationContainerBar, barType) {
-   if (document.querySelector(`.${barType}`).classList[1] == "open-nav-bars"){
-    document.querySelector(`.${barType}`).setAttribute("class", `${barType} close-nav-bars`);
-    toggleHidden (classCalculationContainerBar, 0);
-  } else {
+  if(checkOpenedNav.status == 'close'){
+    console.log(true)
     document.querySelector(`.${barType}`).setAttribute("class", `${barType} open-nav-bars`);
     toggleHidden (classCalculationContainerBar, 300);
+    checkOpenedNav = {status: 'open', openedNav: {classNavOpened: classCalculationContainerBar, barTypeOpened: barType}};
+  } else {
+    if(checkOpenedNav.openedNav.barTypeOpened == barType){
+      document.querySelector(`.${barType}`).setAttribute("class", `${barType} close-nav-bars`);
+      toggleHidden (classCalculationContainerBar, 0);
+      checkOpenedNav.status = 'close';
+    } else {
+      document.querySelector(`.${checkOpenedNav.openedNav.barTypeOpened}`).setAttribute("class", `${checkOpenedNav.openedNav.barTypeOpened} close-nav-bars`);
+      toggleHidden (checkOpenedNav.openedNav.classNavOpened, 0);
+      document.querySelector(`.${barType}`).setAttribute("class", `${barType} open-nav-bars`);
+      toggleHidden (classCalculationContainerBar, 300);
+      checkOpenedNav.openedNav = {classNavOpened: classCalculationContainerBar, barTypeOpened: barType}
+    }
   }
 }
 

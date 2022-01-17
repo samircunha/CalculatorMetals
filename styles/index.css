@@ -1,25 +1,12 @@
 body {
   display: flex;
   justify-content: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgba(155, 153, 153, 0.212);
 }
 
 .measurement-calculator {
-  width: 425px;
-}
-
-.measurement-calculator__title {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.measurement-calculator__title .title {
-  background-color: white;
-  border: 1px solid gray;   
-  font-size: 18px;
-  font-weight: bold;
-  padding: 20px;
+  width: 580px;
 }
 
 .square-bar,
@@ -56,10 +43,9 @@ body {
   font-weight: bold;
 }
 
-.square-bar__calculation-container{
+.square-bar__calculation-container {
   transition: transform ease-out 1s;
 }
-
 
 .square-bar__calculation-container select,
 .square-bar__calculation-container input,
@@ -74,64 +60,90 @@ body {
   border-radius: 5px;
 }
 
-.material-button{
+.material-button {
   display: flex;
   justify-content: space-between;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 30px; 
+  height: 40px;
   border-radius: 4px;
   margin-bottom: 15px;
   padding: 10px;
 }
 
-.material-button__buttons{
+.material-button__buttons {
   padding: 5px;
-  width: 90px;
+  width: 100px;
+  height: 35px;
   border: none;
   background-color: white;
   transition: all 0.5s;
+  background-color: rgba(197, 196, 196, 0.247);
 }
 
-.material-button__buttons:hover, .button-aluminio-active, .button-cobre-active, .button-bronze-active, .button-latao-active {
+.material-button__buttons:hover,
+.button-aluminio-active,
+.button-cobre-active,
+.button-bronze-active,
+.button-latao-active,
+.button-acoinox-active {
   color: white;
+  font-weight: bold;
+  border: 2px solid rgba(0, 0, 0);
   border-radius: 3px;
   padding: 5px;
   transition: all 0.5s;
 }
 
-.button-aluminio:hover, .button-aluminio-active{
+.button-aluminio {
   background-color: #8f8f8f;
+  border-radius: 3px;
 }
 
-.button-cobre:hover, .button-cobre-active{
-  background-color: #B5A642;
+.button-acoinox {
+  background-color: #acb2b4;
+  border-radius: 3px;
 }
 
-.button-bronze:hover, .button-bronze-active{
-  background-color: #DB9370;
+.button-cobre {
+  background-color: #b5a642;
+  border-radius: 3px;
 }
 
-.button-latao:hover, .button-latao-active{
+.button-bronze {
+  background-color: #db9370;
+  border-radius: 3px;
+}
+
+.button-latao {
   background-color: #947549;
+  border-radius: 3px;
 }
 
-@keyframes openNav{
-  from {height: 50px;}
-  to{height: 165px;}
-} 
+@keyframes openNav {
+  from {
+    height: 50px;
+  }
+  to {
+    height: 165px;
+  }
+}
 
-@keyframes closeNav{
-  from {height: 165px;}
-  to{height: 50px;}
-} 
+@keyframes closeNav {
+  from {
+    height: 165px;
+  }
+  to {
+    height: 50px;
+  }
+}
 
-.open-nav-bars{
+.open-nav-bars {
   animation-name: openNav;
   animation-duration: 0.5s;
   animation-fill-mode: both;
 }
 
-.close-nav-bars{
+.close-nav-bars {
   animation-name: closeNav;
   animation-duration: 0.5s;
   animation-fill-mode: both;
