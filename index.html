@@ -14,56 +14,81 @@
     <section class='measurement-calculator'>
         <p>Selecione o Material: </p>
         <div class='material-button'>
-            <button class='material-button__buttons button-aluminio' onclick='handleSelectMaterial("aluminio")'>Alumínio</button>
+            <button class='material-button__buttons button-aluminio'
+                onclick='handleSelectMaterial("aluminio")'>Alumínio</button>
             <button class='material-button__buttons button-cobre' onclick='handleSelectMaterial("cobre")'>Cobre</button>
-            <button class='material-button__buttons button-bronze' onclick='handleSelectMaterial("bronze")'>Bronze</button>
+            <button class='material-button__buttons button-bronze'
+                onclick='handleSelectMaterial("bronze")'>Bronze</button>
             <button class='material-button__buttons button-latao' onclick='handleSelectMaterial("latao")'>Latão</button>
-            <button class='material-button__buttons button-acoinox' onclick='handleSelectMaterial("acoinox")'>Aço Inox</button>
+            <button class='material-button__buttons button-acoinox' onclick='handleSelectMaterial("acoinox")'>Aço
+                Inox</button>
         </div>
         <div class='measurement-calculator__body'>
             <div class='products-options'>
-                <div class='square-bar'>
-                    <button class='square-bar__head' onclick="handleShowCalculationContainer({calulationContainerBar: 'square-bar__calculation-container', barType: 'square-bar'})">
+                <div class='product-structure square-bar'>
+                    <button class='square-bar__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'square-bar__body', barType: 'square-bar'})">
                         <img class='square-bar__head__image' src='./assets/barra-quadrada.png'>
                         <p class='square-bar__head__description'>Barras Quadradas</p>
                     </button>
-                    <div hidden class='square-bar__calculation-container'>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>Largura (mm)</p>
-                                    </td>
-                                    <td>
-                                        <input class='square-value' type="number"></input>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id='show-result-square' class="show-result"></div>
-                        <button onclick='handleCalculationWeight("square")'>Calcular</button>
+                    <div class='product-structure__body square-bar__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-quadrada.png'>
+                        </div>
+                        <div class='product-measurement-calculation square-bar__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='square-bar-value' type="number"
+                                                placeholder="Largura (mm)"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='square-bar-value' type="number"
+                                                placeholder="Espessura (mm)"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='square-bar-value' type="number"
+                                                placeholder="Comprimento (mm)"></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-square-bar' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("square-bar")'>Calcular</button>
+                        </div>
                     </div>
                 </div>
-                <div class='round-bar'>
-                    <button class='round-bar__head' onclick="handleShowCalculationContainer({calulationContainerBar: 'round-bar__calculation-container', barType: 'round-bar'})">
+                <div class='product-structure round-bar'>
+                    <button class='round-bar__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'round-bar__body', barType: 'round-bar'})">
                         <img class='round-bar__head__image' src='./assets/barra-redonda.png'>
                         <p class='round-bar__head__description'>Barras Redondas</p>
                     </button>
-                    <div hidden class='round-bar__calculation-container'>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>Diâmetro (mm)</p>
-                                    </td>
-                                    <td>
-                                        <input class='round-value' type="number"></input>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id='show-result-round' class="show-result"></div>
-                        <button  onclick='handleCalculationWeight("round")'>Calcular</button>
+                    <div class='product-structure__body round-bar__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-redonda.png'>
+                        </div>
+                        <div class='product-measurement-calculation round-bar__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='round-bar-value' type="number"
+                                                placeholder='Diâmetro (mm)'></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-round-bar' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("round-bar")'>Calcular</button>
+                        </div>
                     </div>
                 </div>
             </div>

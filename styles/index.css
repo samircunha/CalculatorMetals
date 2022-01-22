@@ -5,61 +5,7 @@ body {
   background-color: rgba(155, 153, 153, 0.212);
 }
 
-.measurement-calculator {
-  width: 580px;
-}
-
-.square-bar,
-.round-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.square-bar__head,
-.round-bar__head {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.square-bar__head__image,
-.round-bar__head__image {
-  width: 50px;
-}
-
-.square-bar__head__description,
-.round-bar__head__description {
-  margin-left: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.square-bar__calculation-container {
-  transition: transform ease-out 1s;
-}
-
-.square-bar__calculation-container select,
-.square-bar__calculation-container input,
-.square-bar__calculation-container button,
-.round-bar__calculation-container select,
-.round-bar__calculation-container input,
-.round-bar__calculation-container button {
-  width: 100%;
-  font-size: 14px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
+/*Material buttons styles  */
 .material-button {
   display: flex;
   justify-content: space-between;
@@ -73,25 +19,24 @@ body {
 .material-button__buttons {
   padding: 5px;
   width: 100px;
-  height: 35px;
+  height: 40px;
   border: none;
-  background-color: white;
-  transition: all 0.5s;
-  background-color: rgba(197, 196, 196, 0.247);
+  color: white;
 }
 
-.material-button__buttons:hover,
+.material-button__buttons:hover {
+  font-weight: bold;
+  background: rgb(209, 117, 30);
+  transition: all 0.5s;
+}
+
 .button-aluminio-active,
 .button-cobre-active,
 .button-bronze-active,
 .button-latao-active,
 .button-acoinox-active {
-  color: white;
   font-weight: bold;
-  border: 2px solid rgba(0, 0, 0);
-  border-radius: 3px;
-  padding: 5px;
-  transition: all 0.5s;
+  border: 2px solid black;
 }
 
 .button-aluminio {
@@ -119,6 +64,95 @@ body {
   border-radius: 3px;
 }
 
+.measurement-calculator {
+  width: 580px;
+}
+
+.product-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/*Product button head styles */
+.product-structure button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.product-structure button img {
+  width: 50px;
+}
+
+.product-structure button p {
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*Product body styles */
+.product-structure__body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/*Product img styles */
+.product-3d-img {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-3d-img img {
+  width: 50%;
+}
+
+/*Product measurement calculation styles */
+.product-measurement-calculation {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-measurement-calculation input {
+  margin-bottom: 5px;
+}
+
+.product-measurement-calculation div {
+  display: flex;
+  justify-content: center;
+}
+
+.product-measurement-calculation button {
+  width: 70%;
+  background-color: #d9dfe0;
+}
+
+.product-measurement-calculation input,
+.product-measurement-calculation button {
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* hidden product body styles */
+.hidden-product-body{
+  display: none;
+}
+
+/* 
 @keyframes openNav {
   from {
     height: 50px;
@@ -147,4 +181,41 @@ body {
   animation-name: closeNav;
   animation-duration: 0.5s;
   animation-fill-mode: both;
+} */
+
+@media (max-width: 580px) {
+  .measurement-calculator{
+    width: 97vw;
+  }
+
+  .button-aluminio, .button-acoinox, .button-cobre, .button-bronze, .button-latao {
+    background-color: rgba(238, 234, 234, 0.212);
+    color: black;
+  }
+
+  .button-aluminio:active, .button-aluminio:hover, .button-aluminio-active {
+    background-color: #8f8f8f;
+    color: white;
+  }
+
+  .button-acoinox:active, .button-acoinox:hover {
+    background-color: #acb2b4;
+    color: white;
+  }
+
+  .button-cobre:active, .button-cobre:hover {
+    background-color: #b5a642;
+    color: white;
+  }
+
+  .button-bronze:active, .button-bronze:hover {
+    background-color: #db9370;
+    color: white;
+  }
+
+  .button-latao:active, .button-latao:hover{
+    background-color: #947549;
+    color: white;
+  }
+  
 }
