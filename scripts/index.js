@@ -2,7 +2,7 @@ let materialSelected = 'aluminio';
 let materialButtonSelected = {button: document.querySelector(".button-aluminio"), type: "aluminio"};
 let checkOpenedNav = {status: 'close', openedNav: {classNavOpened: '', barTypeOpened: ''}};
 const metals = [
-  { material: "aluminio", value: 2.70 / 1000 },
+  { material: "aluminio", value: 2.7 / 1000 },
   { material: "bronze", value: 8.7 / 1000 },
   { material: "cobre", value: 8.93 / 1000 },
   { material: "latao", value: 8.7 / 1000 },
@@ -30,7 +30,7 @@ class CalculationArea {
       return;
     });
     const barWeight = squareArea * takeMaterialWeight[0].value;
-    return (barWeight);
+    return (barWeight.toFixed(3).replace(".", ","));
   }
 
   materialWeightWithRoundBar() {
@@ -42,7 +42,7 @@ class CalculationArea {
       return;
     });
     const barWeight = roundArea * takeMaterialWeight[0].value;
-    return (barWeight);
+    return (barWeight.toFixed(3).replace(".", ","));
   }
 }
 
@@ -84,42 +84,32 @@ function handleShowCalculationContainer({calulationContainerBar, barType}) {
 
 function toggleNavBar (classCalculationContainerBar, barType) {
   if(checkOpenedNav.status == 'close'){
-    document.querySelector("." + classCalculationContainerBar).setAttribute("class", `product-structure__body ${barType}__body`);
+    document.querySelector("." + classCalculationContainerBar).setAttribute("class", `open-nav-bars`);
+    toggleHidden (`open-nav-bars`, barType, 600);
     checkOpenedNav = {status: 'open', openedNav: {classNavOpened: classCalculationContainerBar, barTypeOpened: barType}};
   } else {
     if(checkOpenedNav.openedNav.barTypeOpened == barType){
-      document.querySelector("." + classCalculationContainerBar).setAttribute("class", `product-structure__body ${barType}__body hidden-product-body`);
+      document.querySelector("." + classCalculationContainerBar).setAttribute("class", `close-nav-bars`);
+      toggleHidden (`close-nav-bars`, barType, 800);
       checkOpenedNav.status = 'close';
     } else {
-      document.querySelector(`.${checkOpenedNav.openedNav.classNavOpened}`).setAttribute("class", `product-structure__body ${checkOpenedNav.openedNav.barTypeOpened}__body hidden-product-body`);
-      document.querySelector(`.${classCalculationContainerBar}`).setAttribute("class", `product-structure__body ${barType}__body`);
+      document.querySelector("." + checkOpenedNav.openedNav.classNavOpened).setAttribute("class", `close-nav-bars`);
+      toggleHidden (`close-nav-bars`, checkOpenedNav.openedNav.barTypeOpened, 800);
+      document.querySelector("." + classCalculationContainerBar).setAttribute("class", `open-nav-bars`);
+      toggleHidden (`open-nav-bars`, barType, 600);
       checkOpenedNav.openedNav = {classNavOpened: classCalculationContainerBar, barTypeOpened: barType};
     }
   }
 }
 
-// function toggleNavBar (classCalculationContainerBar, barType) {
-//   if(checkOpenedNav.status == 'close'){
-//     document.querySelector(`.${barType}`).setAttribute("class", `${barType} open-nav-bars`);
-//     toggleHidden (classCalculationContainerBar, 300);
-//     checkOpenedNav = {status: 'open', openedNav: {classNavOpened: classCalculationContainerBar, barTypeOpened: barType}};
-//   } else {
-//     if(checkOpenedNav.openedNav.barTypeOpened == barType){
-//       document.querySelector(`.${barType}`).setAttribute("class", `${barType} close-nav-bars`);
-//       toggleHidden (classCalculationContainerBar, 0);
-//       checkOpenedNav.status = 'close';
-//     } else {
-//       document.querySelector(`.${checkOpenedNav.openedNav.barTypeOpened}`).setAttribute("class", `${checkOpenedNav.openedNav.barTypeOpened} close-nav-bars`);
-//       toggleHidden (checkOpenedNav.openedNav.classNavOpened, 0);
-//       document.querySelector(`.${barType}`).setAttribute("class", `${barType} open-nav-bars`);
-//       toggleHidden (classCalculationContainerBar, 300);
-//       checkOpenedNav.openedNav = {classNavOpened: classCalculationContainerBar, barTypeOpened: barType}
-//     }
-//   }
-// }
-
-// function toggleHidden (classCalculationContainerBar, time) {
-//   setTimeout(()=>{
-//     document.querySelector("." + classCalculationContainerBar).toggleAttribute("hidden");
-//   }, time)
-// }
+function toggleHidden (status, barType, time) {
+  if(status == "open-nav-bars"){
+    setTimeout(()=>{
+      document.querySelector(`.${status}`).setAttribute("class", `product-structure__body ${barType}__body`);
+    }, time)
+  } else {
+    setTimeout(()=>{
+      document.querySelector(`.${status}`).setAttribute("class", `product-structure__body ${barType}__body hidden-product-body`);
+    }, time)
+  }
+}
