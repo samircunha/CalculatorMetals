@@ -154,6 +154,10 @@ body {
   display: none;
 }
 
+.hidden{
+  display: none;
+}
+
 
 @keyframes openNav {
   0% {
