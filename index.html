@@ -118,7 +118,33 @@
                         </div>
                     </div>
                 </div>
-
+                <div class='product-structure hexagonal-bar'>
+                    <button class='hexagonal-bar__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'hexagonal-bar__body', barType: 'hexagonal-bar'})">
+                        <img class='hexagonal-bar__head__image' src='./assets/barra-sextavada.png'>
+                        <p class='hexagonal-bar__head__description'>Barras Sextavadas</p>
+                    </button>
+                    <div class='product-structure__body hexagonal-bar__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-sextavada.png'>
+                        </div>
+                        <div class='product-measurement-calculation hexagonal-bar__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='hexagonal-bar-value' type="number"
+                                                placeholder='Diâmetro (mm)'></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-hexagonal-bar' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("hexagonal-bar")'>Calcular</button>
+                        </div>
+                    </div>
+                </div>
                 <div class='product-structure rectangular-bar'>
                     <button class='rectangular-bar__head'
                         onclick="handleShowCalculationContainer({calulationContainerBar: 'rectangular-bar__body', barType: 'rectangular-bar'})">
@@ -311,7 +337,39 @@
                         </div>
                     </div>
                 </div>
-
+                <div class='product-structure plug'>
+                    <button class='plug__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'plug__body', barType: 'plug'})">
+                        <img class='plug__head__image' src='./assets/buchas.png'>
+                        <p class='plug__head__description'>Bucha</p>
+                    </button>
+                    <div class='product-structure__body plug__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/buchas.png'>
+                        </div>
+                        <div class='product-measurement-calculation plug__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='plug-value' type="number"
+                                                placeholder='Diâmetro Externo (mm)'></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='plug-tickness' type="number"
+                                                placeholder='Diâmetro Interno (mm)'></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-plug' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("plug")'>Calcular</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
