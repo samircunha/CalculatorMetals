@@ -1,26 +1,29 @@
-let materialSelected = 'aluminio';
-let materialButtonSelected = {button: document.querySelector(".button-aluminio"), type: "aluminio"};
+let materialSelected = '';
+let materialButtonSelected = {button: "", type: ""};
 let checkOpenedNav = {status: 'close', openedNav: {classNavOpened: '', barTypeOpened: ''}};
-const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-T", "profile-U", "billet", "plug"]; 
+const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-T", "profile-U", "billet", "plug", "round-tube", "square-tube", "rectangular-tube"]; 
 const metals = [
   { material: "aluminio", value: 2.7 / 1000, nonExistentProducts: ["billet", "plug"] },
-  { material: "bronze", value: 8.7 / 1000,  nonExistentProducts: ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "profile-L", "profile-T", "profile-U"] },
-  { material: "cobre", value: 8.93 / 1000,  nonExistentProducts: ["square-bar", "round-bar", "hexagonal-bar", "profile-L", "profile-T", "profile-U", "billet", "plug"] },
-  { material: "latao", value: 8.7 / 1000,  nonExistentProducts: ["profile-L", "profile-T", "profile-U", "billet", "plug"] },
+  { material: "bronze", value: 8.7 / 1000,  nonExistentProducts: ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar","coils", "profile-L", "profile-T", "profile-U", "round-tube", "square-tube", "rectangular-tube"] },
+  { material: "cobre", value: 8.93 / 1000,  nonExistentProducts: ["hexagonal-bar", "profile-L", "profile-T", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
+  { material: "latao", value: 8.7 / 1000,  nonExistentProducts: ["profile-L", "profile-T", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
   { material: "acoinox", value: 7.9 / 1000,  nonExistentProducts: ["profile-L", "profile-T", "profile-U", "billet", "plug"] },
 ];
 const pi = 3.14;
 
 window.addEventListener("DOMContentLoaded", ()=>{
-  materialButtonSelected.button.setAttribute('class', `material-button__buttons button-aluminio button-aluminio-active`);
-  selectProducts("aluminio");
+  for(product of allProducts){
+    document.querySelector(`.${product}`).setAttribute("class", `hidden ${product}`);
+
+  }
 })
 
 class WeightCalculator {
-  constructor(type, material, value, length, tickness) {
+  constructor(type, material, width, diameter, length, tickness) {
     (this.type = type),
       (this.material = material),
-      (this.value = value),
+      (this.width = width),
+      (this.diameter = diameter),
       (this.length = length),
       (this.tickness = tickness)
   }
@@ -29,38 +32,51 @@ class WeightCalculator {
     let productArea = '';
     switch (product) {
       case "square-bar":
-        productArea = Math.pow(this.value / 10, 2) * 100;
+        productArea = Math.pow(this.width / 10, 2) * 100;
         break;
       case "round-bar":
-        productArea = Math.pow(this.value / 10 / 2, 2) * 100 * pi;
+        productArea = Math.pow(this.diameter / 10 / 2, 2) * 100 * pi;
         break;
       case "square-plate":
-        productArea = (this.value / 10) * (this.tickness / 10) * (this.length / 10);
+        productArea = (this.width / 10) * (this.tickness / 10) * (this.length / 10);
         break;
       case "hexagonal-bar":
-        productArea = Math.pow(this.value / 10, 2) * 100;
+        if(this.material == "aluminio"){
+          productArea = Math.pow(this.diameter, 2) * 0.002339 / 0.0027;
+        } else {
+          productArea = Math.pow(this.diameter, 2) * 0.007361 / 0.0087;
+        }
         break;
       case "rectangular-bar":
-        productArea = (this.value / 10) * (this.tickness / 10) * 100;
+        productArea = (this.width / 10) * (this.tickness / 10) * 100;
         break;
       case "coils":
-        productArea = (this.value / 10) * (this.tickness / 10) * 100;
+        productArea = (this.width / 10) * (this.tickness / 10) * 100;
         break;
       case "profile-L":
-        productArea = ((this.value / 10) * (this.tickness / 10) + (this.value / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
+        productArea = ((this.width / 10) * (this.tickness / 10) + (this.width / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
         break;
       case "profile-T":
-        productArea = ((this.value / 10) * (this.tickness / 10) + (this.value / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
+        productArea = ((this.width / 10) * (this.tickness / 10) + (this.width / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
         break;
       case "profile-U":
-        productArea = ((this.value / 10) * (this.tickness / 10) + (this.value / 10) * (this.tickness / 10) + ((this.value - this.tickness * 2) / 10) * (this.tickness / 10)) * 100;
+        productArea = ((this.width / 10) * (this.tickness / 10) + (this.width / 10) * (this.tickness / 10) + ((this.width - this.tickness * 2) / 10) * (this.tickness / 10)) * 100;
         break;
       case "billet":
-        productArea = Math.pow(this.value / 10 / 2, 2) * pi * 100;
+        productArea = Math.pow((Number(this.diameter) + 1.58), 2) * 0.0035343 / 0.0087;
         break;
       case "plug":
-        productArea = (Math.pow(this.value / 10 / 2, 2) - Math.pow(this.tickness / 10 / 2, 2)) * pi * 100;
+        productArea = (Math.pow((Number(this.diameter) + 1.58), 2) - Math.pow((Number(this.tickness - 1.58)), 2)) * 0.0035343 / 0.0087;
         break;
+      case "square-tube":
+        productArea = (this.width * 2 - this.tickness * 2) * 2 * this.tickness;
+        break;
+        case "round-tube":
+          productArea = (Math.pow(this.diameter / 10, 2) - Math.pow((Number(this.diameter - this.tickness * 2)) / 10, 2)) * 0.212058 / 0.0027;
+          break;
+        case "rectangular-tube":
+          productArea = ((Number(this.width) + Number(this.diameter)) - (this.tickness * 2)) * 2 * this.tickness;
+          break;
       default:
         alert("Erro ao Calcular os Quantitativos");
         break;
@@ -78,26 +94,33 @@ class WeightCalculator {
 
 function handleCalculationWeight(product) {
   const material = materialSelected;
-  const value = document.querySelector("." + product + "-value").value;
+  const width = document.querySelector("." + product + "-width")?.value;
+  const diameter = document.querySelector("." + product + "-diameter")?.value;
   const length = document.querySelector("." + product + "-length")?.value;
   const tickness = document.querySelector("." + product + "-tickness")?.value;
-  
-  if(tickness > value) {
+
+  if(tickness > width) {
     document
     .getElementById(`show-result-${product}`)
-    .innerHTML = `<b>A expessura deve ser maior que a largura!</b>`;
+    .innerHTML = `<b>A largura deve ser maior que a espessura!</b>`;
     return;
   }
 
-  const newBar = new WeightCalculator(product, material, value, length, tickness);
+  const newBar = new WeightCalculator(product, material, width, diameter, length, tickness);
 
   document
     .getElementById(`show-result-${product}`)
     .innerHTML = `<b>Peso total: ${newBar.weightCalc(product)} Kg</b>`;
+
+  if(material == "bronze") {
+    document
+    .getElementById(`show-desc-${product}`)
+    .innerHTML = `OBS: Peça de 500 mm`
+  }
 }
 
 function handleSelectMaterial (material) {
-  if(materialButtonSelected.button != document.querySelector(".button-" + material)){
+  if(materialButtonSelected.button != document.querySelector(".button-" + material) && materialSelected != ''){
     materialButtonSelected.button.setAttribute('class', `material-button__buttons button-${materialButtonSelected.type}`);
   } 
   materialSelected = material;

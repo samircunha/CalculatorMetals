@@ -40,14 +40,14 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='square-plate-value' type="number"
-                                                placeholder="Largura (mm)"></input>
+                                            <input class='square-plate-tickness' type="number"
+                                                placeholder="Espessura (mm)"></input>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input class='square-plate-tickness' type="number"
-                                                placeholder="Espessura (mm)"></input>
+                                            <input class='square-plate-width' type="number"
+                                                placeholder="Largura (mm)"></input>
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,7 +79,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='square-bar-value' type="number"
+                                            <input class='square-bar-width' type="number"
                                                 placeholder="Largura (mm)"></input>
                                         </td>
                                     </tr>
@@ -106,7 +106,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='round-bar-value' type="number"
+                                            <input class='round-bar-diameter' type="number"
                                                 placeholder='Diâmetro (mm)'></input>
                                         </td>
                                     </tr>
@@ -133,7 +133,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='hexagonal-bar-value' type="number"
+                                            <input class='hexagonal-bar-diameter' type="number"
                                                 placeholder='Diâmetro (mm)'></input>
                                         </td>
                                     </tr>
@@ -160,7 +160,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='rectangular-bar-value' type="number"
+                                            <input class='rectangular-bar-width' type="number"
                                                 placeholder='Largura (mm)'></input>
                                         </td>
                                     </tr>
@@ -193,7 +193,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='coils-value' type="number"
+                                            <input class='coils-width' type="number"
                                                 placeholder='Largura (mm)'></input>
                                         </td>
                                     </tr>
@@ -226,7 +226,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='profile-L-value' type="number"
+                                            <input class='profile-L-width' type="number"
                                                 placeholder='Largura (mm)'></input>
                                         </td>
                                     </tr>
@@ -259,7 +259,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='profile-T-value' type="number"
+                                            <input class='profile-T-width' type="number"
                                                 placeholder='Largura (mm)'></input>
                                         </td>
                                     </tr>
@@ -292,7 +292,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='profile-U-value' type="number"
+                                            <input class='profile-U-width' type="number"
                                                 placeholder='Largura (mm)'></input>
                                         </td>
                                     </tr>
@@ -314,7 +314,7 @@
                     <button class='billet__head'
                         onclick="handleShowCalculationContainer({calulationContainerBar: 'billet__body', barType: 'billet'})">
                         <img class='billet__head__image' src='./assets/barra-redonda.png'>
-                        <p class='billet__head__description'>Tarrugo</p>
+                        <p class='billet__head__description'>Tarrugos</p>
                     </button>
                     <div class='product-structure__body billet__body hidden-product-body'>
                         <div class='product-3d-img'>
@@ -325,13 +325,14 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='billet-value' type="number"
+                                            <input class='billet-diameter' type="number"
                                                 placeholder='Diâmetro (mm)'></input>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div id='show-result-billet' class="show-result"></div>
+                            <div id='show-desc-billet' class="show-result"></div>
                             <button class='calculation-button'
                                 onclick='handleCalculationWeight("billet")'>Calcular</button>
                         </div>
@@ -341,7 +342,7 @@
                     <button class='plug__head'
                         onclick="handleShowCalculationContainer({calulationContainerBar: 'plug__body', barType: 'plug'})">
                         <img class='plug__head__image' src='./assets/buchas.png'>
-                        <p class='plug__head__description'>Bucha</p>
+                        <p class='plug__head__description'>Buchas</p>
                     </button>
                     <div class='product-structure__body plug__body hidden-product-body'>
                         <div class='product-3d-img'>
@@ -352,7 +353,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input class='plug-value' type="number"
+                                            <input class='plug-diameter' type="number"
                                                 placeholder='Diâmetro Externo (mm)'></input>
                                         </td>
                                     </tr>
@@ -365,8 +366,114 @@
                                 </tbody>
                             </table>
                             <div id='show-result-plug' class="show-result"></div>
+                            <div id='show-desc-plug' class="show-result"></div>
                             <button class='calculation-button'
                                 onclick='handleCalculationWeight("plug")'>Calcular</button>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-structure square-tube'>
+                    <button class='square-tube__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'square-tube__body', barType: 'square-tube'})">
+                        <img class='square-tube__head__image' src='./assets/barra-quadrada.png'>
+                        <p class='square-tube__head__description'>Tubos Quadradas</p>
+                    </button>
+                    <div class='product-structure__body square-tube__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-quadrada.png'>
+                        </div>
+                        <div class='product-measurement-calculation square-tube__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='square-tube-tickness' type="number"
+                                                placeholder='Espessura (mm)'></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='square-tube-width' type="number"
+                                                placeholder="Largura (mm)"></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-square-tube' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("square-tube")'>Calcular</button>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-structure round-tube'>
+                    <button class='round-tube__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'round-tube__body', barType: 'round-tube'})">
+                        <img class='round-tube__head__image' src='./assets/barra-redonda.png'>
+                        <p class='round-tube__head__description'>Tubos Redondas</p>
+                    </button>
+                    <div class='product-structure__body round-tube__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-redonda.png'>
+                        </div>
+                        <div class='product-measurement-calculation round-tube__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='round-tube-tickness' type="number"
+                                                placeholder='Espessura (mm)'></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='round-tube-diameter' type="number"
+                                                placeholder='Diâmetro (mm)'></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-round-tube' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("round-tube")'>Calcular</button>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-structure rectangular-tube'>
+                    <button class='rectangular-tube__head'
+                        onclick="handleShowCalculationContainer({calulationContainerBar: 'rectangular-tube__body', barType: 'rectangular-tube'})">
+                        <img class='rectangular-tube__head__image' src='./assets/barra-retangular.png'>
+                        <p class='rectangular-tube__head__description'>Tubos Retangular</p>
+                    </button>
+                    <div class='product-structure__body rectangular-tube__body hidden-product-body'>
+                        <div class='product-3d-img'>
+                            <img src='./assets/barra-retangular.png'>
+                        </div>
+                        <div class='product-measurement-calculation rectangular-tube__calculation-container'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class='rectangular-tube-tickness' type="number"
+                                                placeholder='Espessura (mm)'></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='rectangular-tube-width' type="number"
+                                                placeholder='Lado Menor (mm)'></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class='rectangular-tube-diameter' type="number"
+                                                placeholder='Lado Maior (mm)'></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id='show-result-rectangular-tube' class="show-result"></div>
+                            <button class='calculation-button'
+                                onclick='handleCalculationWeight("rectangular-tube")'>Calcular</button>
                         </div>
                     </div>
                 </div>
