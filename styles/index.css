@@ -9,9 +9,7 @@ body {
 .material-button {
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid rgba(0, 0, 0, 0.2); */
   height: 40px;
-  /* border-radius: 4px; */
   margin-bottom: 15px;
   padding: 5px;
 }
@@ -42,27 +40,22 @@ body {
 
 .button-aluminio {
   background-color: #8f8f8f;
-  /* border-radius: 3px; */
 }
 
 .button-acoinox {
   background-color: #acb2b4;
-  /* border-radius: 3px; */
 }
 
 .button-cobre {
   background-color: #b5a642;
-  /* border-radius: 3px; */
 }
 
 .button-bronze {
   background-color: #db9370;
-  /* border-radius: 3px; */
 }
 
 .button-latao {
   background-color: #947549;
-  /* border-radius: 3px; */
 }
 
 .measurement-calculator {
@@ -74,17 +67,17 @@ body {
   flex-direction: column;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  /* border-radius: 5px; */
   background-color: white;
   padding: 10px;
   margin-bottom: 10px;
-  box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.2);
+  /* box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.2); */
 }
 
 /*Product button head styles */
 .product-structure button {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   border: none;
   background: none;
@@ -92,7 +85,7 @@ body {
 }
 
 .product-structure button img {
-  width: 50px;
+  width: 40px;
 }
 
 .product-structure button p {
@@ -149,7 +142,6 @@ body {
   font-size: 14px;
   padding: 10px;
   border: none;
-  /* border-radius: 5px; */
 }
 
 /* hidden product body styles */

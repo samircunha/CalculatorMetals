@@ -1,13 +1,13 @@
 let materialSelected = '';
 let materialButtonSelected = {button: "", type: ""};
 let checkOpenedNav = {status: 'close', openedNav: {classNavOpened: '', barTypeOpened: ''}};
-const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-T", "profile-U", "billet", "plug", "round-tube", "square-tube", "rectangular-tube"]; 
+const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-U", "billet", "plug", "round-tube", "square-tube", "rectangular-tube"]; 
 const metals = [
   { material: "aluminio", value: 2.7 / 1000, nonExistentProducts: ["billet", "plug"] },
-  { material: "bronze", value: 8.7 / 1000,  nonExistentProducts: ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar","coils", "profile-L", "profile-T", "profile-U", "round-tube", "square-tube", "rectangular-tube"] },
-  { material: "cobre", value: 8.93 / 1000,  nonExistentProducts: ["hexagonal-bar", "profile-L", "profile-T", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
-  { material: "latao", value: 8.7 / 1000,  nonExistentProducts: ["profile-L", "profile-T", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
-  { material: "acoinox", value: 7.9 / 1000,  nonExistentProducts: ["profile-L", "profile-T", "profile-U", "billet", "plug"] },
+  { material: "bronze", value: 8.7 / 1000,  nonExistentProducts: ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar","coils", "profile-L", "profile-U", "round-tube", "square-tube", "rectangular-tube"] },
+  { material: "cobre", value: 8.93 / 1000,  nonExistentProducts: ["hexagonal-bar", "profile-L", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
+  { material: "latao", value: 8.7 / 1000,  nonExistentProducts: ["profile-L", "profile-U", "billet", "plug", "square-tube", "rectangular-tube"] },
+  { material: "acoinox", value: 7.9 / 1000,  nonExistentProducts: ["profile-L", "profile-U", "billet", "plug"] },
 ];
 const pi = 3.14;
 
@@ -54,9 +54,6 @@ class WeightCalculator {
         productArea = (this.width / 10) * (this.tickness / 10) * 100;
         break;
       case "profile-L":
-        productArea = ((this.width / 10) * (this.tickness / 10) + (this.width / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
-        break;
-      case "profile-T":
         productArea = ((this.width / 10) * (this.tickness / 10) + (this.width / 10 - this.tickness / 10) * (this.tickness / 10)) * 100;
         break;
       case "profile-U":
@@ -153,6 +150,9 @@ function selectProducts(material) {
 }
 
 function showAllProducts(){
+  if(checkOpenedNav.openedNav.barTypeOpened != ''){
+    // clearFields()
+  }
   for(product of allProducts){
     document.querySelector(`.${product}`).setAttribute("class", `product-structure ${product}`);
   }
@@ -166,6 +166,18 @@ function hiddenNonExistentProducts (material) {
       }
     }
   }
+}
+
+function clearFields () {
+  // const usedProduct = checkOpenedNav.openedNav.barTypeOpened;
+  // const width = document.querySelector("." + usedProduct + "-width")?.value = '';
+  // const diameter = document.querySelector("." + usedProduct + "-diameter")?.value = '';
+  // const length = document.querySelector("." + usedProduct + "-length")?.value = '';
+  // const tickness = document.querySelector("." + usedProduct + "-tickness")?.value = '';
+  // document
+  //   .getElementById(`show-result-${usedProduct}`)
+  //   .innerHTML = "";
+  // console.log(width, diameter, tickness, length)
 }
 
 function handleShowCalculationContainer({calulationContainerBar, barType}) {
