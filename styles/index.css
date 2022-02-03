@@ -2,7 +2,7 @@ body {
   display: flex;
   justify-content: center;
   font-family: "Open Sans", sans-serif;
-  background-color: rgba(155, 153, 153, 0.212);
+  background-color: rgba(237, 237, 237);
 }
 
 /*Material buttons styles  */
@@ -39,23 +39,23 @@ body {
 }
 
 .button-aluminio {
-  background-color: #8f8f8f;
+  background-color: #787777;
 }
 
 .button-acoinox {
-  background-color: #acb2b4;
+  background-color: #949494;
 }
 
 .button-cobre {
-  background-color: #b5a642;
+  background-color: #B05717;
 }
 
 .button-bronze {
-  background-color: #db9370;
+  background-color: #945D41;
 }
 
 .button-latao {
-  background-color: #947549;
+  background-color: #C7A228;
 }
 
 .measurement-calculator {
@@ -194,33 +194,33 @@ body {
   }
 
   .button-aluminio, .button-acoinox, .button-cobre, .button-bronze, .button-latao {
-    background-color: rgba(238, 234, 234, 0.212);
+    background-color: rgba(237, 237, 237);
     color: black;
   }
 
   .button-aluminio:hover, .button-aluminio-active {
-    background-color: #8f8f8f;
+    background-color: #787777;
     color: white;
   }
 
   .button-acoinox:hover, .button-acoinox-active {
-    background-color: #acb2b4;
+    background-color: #949494;
     font-size: 13px;
     color: white;
   }
 
   .button-cobre:hover, .button-cobre-active {
-    background-color: #b5a642;
+    background-color: #B05717;
     color: white;
   }
 
   .button-bronze:hover, .button-bronze-active {
-    background-color: #db9370;
+    background-color: #945D41;
     color: white;
   }
 
   .button-latao:active, .button-latao:hover{
-    background-color: #947549;
+    background-color: #C7a228;
     color: white;
   }
 }
