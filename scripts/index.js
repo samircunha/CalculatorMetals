@@ -1,6 +1,7 @@
 let materialSelected = '';
 let materialButtonSelected = {button: "", type: ""};
 let checkOpenedNav = {status: 'close', openedNav: {classNavOpened: '', barTypeOpened: ''}};
+let utilizedMeasures = [];
 const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-U", "billet", "plug", "round-tube", "square-tube", "rectangular-tube"]; 
 const metals = [
   { material: "aluminio", value: 2.7 / 1000, nonExistentProducts: ["billet", "plug"] },
@@ -85,21 +86,23 @@ class WeightCalculator {
       return;
     });
     const barWeight = productArea * takeMaterialWeight[0].value;
-    return (barWeight.toFixed(3).replace(".", ","));
+    return (barWeight.toLocaleString("pt-br"));
   }
 }
 
 function handleCalculationWeight(product) {
   const material = materialSelected;
-  const width = document.querySelector("." + product + "-width")?.value;
-  const diameter = document.querySelector("." + product + "-diameter")?.value;
-  const length = document.querySelector("." + product + "-length")?.value;
-  const tickness = document.querySelector("." + product + "-tickness")?.value;
+  const width = Number(document.querySelector("." + product + "-width")?.value);
+  const diameter = Number(document.querySelector("." + product + "-diameter")?.value);
+  const length = Number(document.querySelector("." + product + "-length")?.value);
+  const tickness = Number(document.querySelector("." + product + "-tickness")?.value);
+
+  utilizedMeasures = [{type: "width", value: width}, {type: "diameter", value: diameter}, {type: "length", value: length}, {type: "tickness", value: tickness}];
 
   if(tickness > width) {
     document
     .getElementById(`show-result-${product}`)
-    .innerHTML = `<b>A largura deve ser maior que a espessura!</b>`;
+    .innerHTML = `A largura deve ser maior que a espessura!`;
     return;
   }
 
@@ -108,12 +111,6 @@ function handleCalculationWeight(product) {
   document
     .getElementById(`show-result-${product}`)
     .innerHTML = `<b>Peso total: ${newBar.weightCalc(product)} Kg</b>`;
-
-  if(material == "bronze") {
-    document
-    .getElementById(`show-desc-${product}`)
-    .innerHTML = `OBS: Peça de 500 mm`
-  }
 }
 
 function handleSelectMaterial (material) {
@@ -151,7 +148,10 @@ function selectProducts(material) {
 
 function showAllProducts(){
   if(checkOpenedNav.openedNav.barTypeOpened != ''){
-    // clearFields()
+    clearFields()
+  }
+  if(checkOpenedNav.status == "open"){
+    closeOpenNavsWhenMaterialChange()
   }
   for(product of allProducts){
     document.querySelector(`.${product}`).setAttribute("class", `product-structure ${product}`);
@@ -168,16 +168,27 @@ function hiddenNonExistentProducts (material) {
   }
 }
 
+function closeOpenNavsWhenMaterialChange () {
+  for(product of allProducts){
+    document.querySelector(`.${product}__body`).setAttribute("class", `product-structure__body ${product}__body hidden-product-body`);
+  }
+  checkOpenedNav.status = 'close'
+}
+
 function clearFields () {
-  // const usedProduct = checkOpenedNav.openedNav.barTypeOpened;
-  // const width = document.querySelector("." + usedProduct + "-width")?.value = '';
-  // const diameter = document.querySelector("." + usedProduct + "-diameter")?.value = '';
-  // const length = document.querySelector("." + usedProduct + "-length")?.value = '';
-  // const tickness = document.querySelector("." + usedProduct + "-tickness")?.value = '';
-  // document
-  //   .getElementById(`show-result-${usedProduct}`)
-  //   .innerHTML = "";
-  // console.log(width, diameter, tickness, length)
+  const product = checkOpenedNav.openedNav.barTypeOpened;
+  for (measure of utilizedMeasures){
+    if (measure.value >= 0){
+      try {
+        document.querySelector("." + product + "-" + measure.type).value = '';
+      } catch (error) {
+        return
+      }
+    }
+  }
+  document
+    .getElementById(`show-result-${product}`)
+    .innerHTML = "";
 }
 
 function handleShowCalculationContainer({calulationContainerBar, barType}) {
@@ -194,9 +205,11 @@ function toggleNavBar (classCalculationContainerBar, barType) {
       document.querySelector("." + classCalculationContainerBar).setAttribute("class", `close-nav-bars`);
       toggleHidden (`close-nav-bars`, barType, 800);
       checkOpenedNav.status = 'close';
+      clearFields();
     } else {
       document.querySelector("." + checkOpenedNav.openedNav.classNavOpened).setAttribute("class", `close-nav-bars`);
       toggleHidden (`close-nav-bars`, checkOpenedNav.openedNav.barTypeOpened, 800);
+      clearFields();
       document.querySelector("." + classCalculationContainerBar).setAttribute("class", `open-nav-bars`);
       toggleHidden (`open-nav-bars`, barType, 600);
       checkOpenedNav.openedNav = {classNavOpened: classCalculationContainerBar, barTypeOpened: barType};
