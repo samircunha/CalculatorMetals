@@ -12,439 +12,170 @@
 
 <body>
     <section class='measurement-calculator'>
-        <p>Selecione o Material: </p>
-        <div class='material-button'>
-            <button class='material-button__buttons button-aluminio'
-                onclick='handleSelectMaterial("aluminio")'>Alumínio</button>
-            <button class='material-button__buttons button-cobre' onclick='handleSelectMaterial("cobre")'>Cobre</button>
-            <button class='material-button__buttons button-bronze'
-                onclick='handleSelectMaterial("bronze")'>Bronze</button>
-            <button class='material-button__buttons button-latao' onclick='handleSelectMaterial("latao")'>Latão</button>
-            <button class='material-button__buttons button-acoinox' onclick='handleSelectMaterial("acoinox")'>Aço
-                Inox</button>
+        <div class="materials-container">
+            <h2>Escolha o <span>Material</span> </h2>
+            <div class='material-button'>
+                <button class='material-button__buttons button-acoinox' onclick='handleSelectMaterial("acoinox")'>Aço
+                    Inox</button>
+                <button class='material-button__buttons button-aluminio'
+                    onclick='handleSelectMaterial("aluminio")'>Alumínio</button>
+                <button class='material-button__buttons button-bronze'
+                    onclick='handleSelectMaterial("bronze")'>Bronze</button>
+                <button class='material-button__buttons button-cobre' onclick='handleSelectMaterial("cobre")'>Cobre</button>
+                <button class='material-button__buttons button-latao' onclick='handleSelectMaterial("latao")'>Latão</button>
+            </div>
         </div>
-        <div class='measurement-calculator__body'>
-            <div class='products-options'>
-                <div class='product-structure square-plate'>
-                    <button class='square-plate__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'square-plate__body', barType: 'square-plate'})">
-                        <img class='square-plate__head__image' src='./assets/chapas.png'>
-                        <p class='square-plate__head__description'>Chapas</p>
-                    </button>
-                    <div class='product-structure__body square-plate__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/chapas.png'>
-                        </div>
-                        <div class='product-measurement-calculation square-plate__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='square-plate-tickness' type="number"
-                                                placeholder="Espessura (mm)"></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='square-plate-width' type="number"
-                                                placeholder="Largura (mm)"></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='square-plate-length' type="number"
-                                                placeholder="Comprimento (mm)"></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-square-plate' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("square-plate")'>Calcular</button>
-                        </div>
-                    </div>
-                </div>
+        <div class='formats-container'>
+            <h2>Escolha o <span>Formato</span> </h2>
+            <div class='formats-options'>
                 <div class='product-structure square-bar'>
-                    <button class='square-bar__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'square-bar__body', barType: 'square-bar'})">
+                    <button class='product-button square-bar__head'
+                        onclick="handleSelectProduct('square-bar')">
                         <img class='square-bar__head__image' src='./assets/barra-quadrada.png'>
-                        <p class='square-bar__head__description'>Barras Quadradas</p>
+                        <p class='square-bar__head__description'>Barra Quadrada</p>
                     </button>
-                    <div class='product-structure__body square-bar__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-quadrada.png'>
-                        </div>
-                        <div class='product-measurement-calculation square-bar__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='square-bar-width' type="number"
-                                                placeholder="Largura (mm)"></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-square-bar' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("square-bar")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure round-bar'>
-                    <button class='round-bar__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'round-bar__body', barType: 'round-bar'})">
+                    <button class='product-button round-bar__head'
+                        onclick="handleSelectProduct('round-bar')">
                         <img class='round-bar__head__image' src='./assets/barra-redonda.png'>
-                        <p class='round-bar__head__description'>Barras Redondas</p>
+                        <p class='round-bar__head__description'>Barra Redonda</p>
                     </button>
-                    <div class='product-structure__body round-bar__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-redonda.png'>
-                        </div>
-                        <div class='product-measurement-calculation round-bar__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='round-bar-diameter' type="number"
-                                                placeholder='Diâmetro (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-round-bar' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("round-bar")'>Calcular</button>
-                        </div>
-                    </div>
-                </div>
-                <div class='product-structure hexagonal-bar'>
-                    <button class='hexagonal-bar__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'hexagonal-bar__body', barType: 'hexagonal-bar'})">
-                        <img class='hexagonal-bar__head__image' src='./assets/barra-sextavada.png'>
-                        <p class='hexagonal-bar__head__description'>Barras Sextavadas</p>
-                    </button>
-                    <div class='product-structure__body hexagonal-bar__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-sextavada.png'>
-                        </div>
-                        <div class='product-measurement-calculation hexagonal-bar__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='hexagonal-bar-diameter' type="number"
-                                                placeholder='Diâmetro (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-hexagonal-bar' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("hexagonal-bar")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure rectangular-bar'>
-                    <button class='rectangular-bar__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'rectangular-bar__body', barType: 'rectangular-bar'})">
+                    <button class='product-button rectangular-bar__head'
+                        onclick="handleSelectProduct('rectangular-bar')">    
                         <img class='rectangular-bar__head__image' src='./assets/barra-retangular.png'>
-                        <p class='rectangular-bar__head__description'>Barras Retangular</p>
+                        <p class='rectangular-bar__head__description'>Barra Retangular</p>
                     </button>
-                    <div class='product-structure__body rectangular-bar__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-retangular.png'>
-                        </div>
-                        <div class='product-measurement-calculation rectangular-bar__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='rectangular-bar-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='rectangular-bar-width' type="number"
-                                                placeholder='Largura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-rectangular-bar' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("rectangular-bar")'>Calcular</button>
-                        </div>
-                    </div>
+                </div>
+                <div class='product-structure hexagonal-bar'>
+                    <button class='product-button hexagonal-bar__head'
+                    onclick="handleSelectProduct('hexagonal-bar')">
+                        <img class='hexagonal-bar__head__image' src='./assets/barra-sextavada.png'>
+                        <p class='hexagonal-bar__head__description'>Barra Sextavada</p>
+                    </button>
                 </div>
                 <div class='product-structure coils'>
-                    <button class='coils__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'coils__body', barType: 'coils'})">
+                    <button class='product-button coils__head'
+                    onclick="handleSelectProduct('coils')">
                         <img class='coils__head__image' src='./assets/bobinas.png'>
-                        <p class='coils__head__description'>Bobinas</p>
+                        <p class='coils__head__description'>Bobina</p>
                     </button>
-                    <div class='product-structure__body coils__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/bobinas.png'>
-                        </div>
-                        <div class='product-measurement-calculation coils__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='coils-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='coils-width' type="number"
-                                                placeholder='Largura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-coils' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("coils")'>Calcular</button>
-                        </div>
-                    </div>
+                </div>
+                <div class='product-structure plug'>
+                    <button class='product-button plug__head'
+                    onclick="handleSelectProduct('plug')">
+                        <img class='plug__head__image' src='./assets/buchas.png'>
+                        <p class='plug__head__description'>Bucha</p>
+                    </button>
+                </div>
+                <div class='product-structure square-plate'>
+                    <button class='product-button square-plate__head'
+                    onclick="handleSelectProduct('square-plate')">
+                        <img class='square-plate__head__image' src='./assets/chapas.png'>
+                        <p class='square-plate__head__description'>Chapa</p>
+                    </button>
                 </div>
                 <div class='product-structure profile-L'>
-                    <button class='profile-L__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'profile-L__body', barType: 'profile-L'})">
+                    <button class='product-button profile-L__head'
+                    onclick="handleSelectProduct('profile-L')">
                         <img class='profile-L__head__image' src='./assets/perfil-L.png'>
                         <p class='profile-L__head__description'>Perfil em L Abas Iguais</p>
                     </button>
-                    <div class='product-structure__body profile-L__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/perfil-L.png'>
-                        </div>
-                        <div class='product-measurement-calculation profile-L__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='profile-L-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='profile-L-width' type="number"
-                                                placeholder='Largura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-profile-L' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("profile-L")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure profile-U'>
-                    <button class='profile-U__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'profile-U__body', barType: 'profile-U'})">
+                    <button class='product-button profile-U__head'
+                    onclick="handleSelectProduct('profile-U')">
                         <img class='profile-U__head__image' src='./assets/perfil-U.png'>
                         <p class='profile-U__head__description'>Perfil em U Abas Iguais</p>
                     </button>
-                    <div class='product-structure__body profile-U__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/perfil-U.png'>
-                        </div>
-                        <div class='product-measurement-calculation profile-U__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='profile-U-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='profile-U-width' type="number"
-                                                placeholder='Largura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-profile-U' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("profile-U")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure billet'>
-                    <button class='billet__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'billet__body', barType: 'billet'})">
+                    <button class='product-button billet__head'
+                    onclick="handleSelectProduct('billet')">
                         <img class='billet__head__image' src='./assets/barra-redonda.png'>
-                        <p class='billet__head__description'>Tarrugos</p>
+                        <p class='billet__head__description'>Tarrugo</p>
                     </button>
-                    <div class='product-structure__body billet__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-redonda.png'>
-                        </div>
-                        <div class='product-measurement-calculation billet__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='billet-diameter' type="number"
-                                                placeholder='Diâmetro (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-billet' class="show-result"></div>
-                            <div id='show-desc-billet' class="show-result">OBS: Peça de 500 mm</div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("billet")'>Calcular</button>
-                        </div>
-                    </div>
-                </div>
-                <div class='product-structure plug'>
-                    <button class='plug__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'plug__body', barType: 'plug'})">
-                        <img class='plug__head__image' src='./assets/buchas.png'>
-                        <p class='plug__head__description'>Buchas</p>
-                    </button>
-                    <div class='product-structure__body plug__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/buchas.png'>
-                        </div>
-                        <div class='product-measurement-calculation plug__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='plug-diameter' type="number"
-                                                placeholder='Diâmetro Externo (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='plug-tickness' type="number"
-                                                placeholder='Diâmetro Interno (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-plug' class="show-result"></div>
-                            <div id='show-desc-plug' class="show-result">OBS: Peça de 500 mm</div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("plug")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure square-tube'>
-                    <button class='square-tube__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'square-tube__body', barType: 'square-tube'})">
+                    <button class='product-button square-tube__head'
+                    onclick="handleSelectProduct('square-tube')">
                         <img class='square-tube__head__image' src='./assets/barra-quadrada.png'>
-                        <p class='square-tube__head__description'>Tubos Quadradas</p>
+                        <p class='square-tube__head__description'>Tubo Quadrada</p>
                     </button>
-                    <div class='product-structure__body square-tube__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/barra-quadrada.png'>
-                        </div>
-                        <div class='product-measurement-calculation square-tube__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='square-tube-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='square-tube-width' type="number"
-                                                placeholder="Largura (mm)"></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-square-tube' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("square-tube")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure round-tube'>
-                    <button class='round-tube__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'round-tube__body', barType: 'round-tube'})">
+                    <button class='product-button round-tube__head'
+                    onclick="handleSelectProduct('round-tube')">
                         <img class='round-tube__head__image' src='./assets/tubo-redondo.png'>
-                        <p class='round-tube__head__description'>Tubos Redondas</p>
+                        <p class='round-tube__head__description'>Tubo Redondo</p>
                     </button>
-                    <div class='product-structure__body round-tube__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/tubo-redondo.png'>
-                        </div>
-                        <div class='product-measurement-calculation round-tube__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='round-tube-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='round-tube-diameter' type="number"
-                                                placeholder='Diâmetro (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-round-tube' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("round-tube")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
                 <div class='product-structure rectangular-tube'>
-                    <button class='rectangular-tube__head'
-                        onclick="handleShowCalculationContainer({calulationContainerBar: 'rectangular-tube__body', barType: 'rectangular-tube'})">
+                    <button class='product-button rectangular-tube__head'
+                    onclick="handleSelectProduct('rectangular-tube')">
                         <img class='rectangular-tube__head__image' src='./assets/tubo-retangular.png'>
-                        <p class='rectangular-tube__head__description'>Tubos Retangular</p>
+                        <p class='rectangular-tube__head__description'>Tubo Retangular</p>
                     </button>
-                    <div class='product-structure__body rectangular-tube__body hidden-product-body'>
-                        <div class='product-3d-img'>
-                            <img src='./assets/tubo-retangular.png'>
-                        </div>
-                        <div class='product-measurement-calculation rectangular-tube__calculation-container'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input class='rectangular-tube-tickness' type="number"
-                                                placeholder='Espessura (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='rectangular-tube-width' type="number"
-                                                placeholder='Lado Menor (mm)'></input>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input class='rectangular-tube-diameter' type="number"
-                                                placeholder='Lado Maior (mm)'></input>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id='show-result-rectangular-tube' class="show-result"></div>
-                            <button class='calculation-button'
-                                onclick='handleCalculationWeight("rectangular-tube")'>Calcular</button>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
+        <div class="measurements-container">
+            <h2>Calcule por <span>Medidas</span> </h2>
+            <div class="img-3d-container">
+                <img class='img3d' src=''>
+            </div>
+            <table>
+                <tbody id="table-body">
+                    <tr>
+                        <td id="table-data-E - Espessura"> 
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-L - Largura">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-C - Comprimento">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-D - Diâmetro">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-Di - Diâmetro Interno">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-De - Diâmetro Externo">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-L1 - Lado Maior">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="table-data-L2 - Lado Menor">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Peso por metro</p>
+                            <div class='result'>150</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <script src="./scripts/index.js"></script>
