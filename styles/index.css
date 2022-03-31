@@ -73,7 +73,7 @@ span{
 }
 
 .product-structure button img {
-  width: 30px;
+  width: 40px;
   margin-left: 25%;
 }
 
@@ -140,9 +140,43 @@ input[type=number]::-webkit-outer-spin-button {
   display: none;
 }
 
-@media (max-width: 580px) {
-  .measurement-calculator{
-    width: 97vw;
+@media (max-width: 768px) {
+  section{
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+  }
+  .materials-container{
+    width: 50vw;
+  }
+  .formats-container{
+    width: 50vw;
+  }
+  .measurements-container{
+    width: 50vw;
+  }
+  .img3d{
+    width: 25vw;
+  }
+  .input{
+    width: 50vw;
+  }
+  .result{
+    width: 50vw;
   }
 }
 
+@media (max-width: 560px) {
+  .product-structure button img {
+    margin-left: 15%;
+  }
+  .product-structure button p {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 375) {
+  .product-structure button img {
+    margin-left: 0%;
+  }
+}

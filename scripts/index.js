@@ -20,6 +20,10 @@ const allProducts = [
     product: "square-plate",
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
   },
+  {
+    product: "checkered-plate",
+    fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
+  },
   { product: "profile-L", fields: ["E - Espessura", "L - Largura"] },
   { product: "profile-U", fields: ["E - Espessura", "L - Largura"] },
   { product: "billet", fields: ["D - Diâmetro"] },
@@ -38,6 +42,7 @@ const metals = [
     value: 8.7 / 1000,
     nonExistentProducts: [
       "square-plate",
+      "checkered-plate",
       "square-bar",
       "round-bar",
       "hexagonal-bar",
