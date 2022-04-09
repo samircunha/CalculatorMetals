@@ -5,7 +5,6 @@ let checkOpenedNav = {
   openedNav: { classNavOpened: "", barTypeOpened: "" },
 };
 let utilizedMeasures = [];
-// const allProducts = ["square-plate", "square-bar", "round-bar", "hexagonal-bar", "rectangular-bar", "coils", "profile-L", "profile-U", "billet", "plug", "round-tube", "square-tube", "rectangular-tube"];
 const allProducts = [
   { product: "square-bar", fields: ["L - Largura"] },
   { product: "round-bar", fields: ["D - Diâmetro"] },
@@ -29,7 +28,10 @@ const allProducts = [
   { product: "billet", fields: ["D - Diâmetro"] },
   { product: "square-tube", fields: ["E - Espessura", "L - Largura"] },
   { product: "round-tube", fields: ["E - Espessura", "D - Diâmetro"] },
-  { product: "rectangular-tube", fields: ["E - Espessura", "L1 - Lado Maior", "L2 - Lado Menor"] },
+  {
+    product: "rectangular-tube",
+    fields: ["E - Espessura", "L1 - Lado Maior", "L2 - Lado Menor"],
+  },
 ];
 const metals = [
   {
@@ -97,80 +99,79 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 class WeightCalculator {
-  constructor(type, material, width, diameter, length, tickness) {
+  constructor(type, material, first, second, third) {
     (this.type = type),
       (this.material = material),
-      (this.width = width),
-      (this.diameter = diameter),
-      (this.length = length),
-      (this.tickness = tickness);
+      (this.first = first),
+      (this.second = second),
+      (this.third = third);
   }
 
   weightCalc(product) {
     let productArea = "";
     switch (product) {
       case "square-bar":
-        productArea = Math.pow(this.width / 10, 2) * 100;
+        productArea = Math.pow(this.first / 10, 2) * 100;
         break;
       case "round-bar":
-        productArea = Math.pow(this.diameter / 10 / 2, 2) * 100 * pi;
+        productArea = Math.pow(this.first / 10 / 2, 2) * 100 * pi;
         break;
       case "square-plate":
         productArea =
-          (this.width / 10) * (this.tickness / 10) * (this.length / 10);
+          (this.second / 10) * (this.first / 10) * (this.third / 10);
         break;
       case "hexagonal-bar":
         if (this.material == "aluminio") {
-          productArea = (Math.pow(this.diameter, 2) * 0.002339) / 0.0027;
+          productArea = (Math.pow(this.first, 2) * 0.002339) / 0.0027;
         } else {
-          productArea = (Math.pow(this.diameter, 2) * 0.007361) / 0.0087;
+          productArea = (Math.pow(this.first, 2) * 0.007361) / 0.0087;
         }
         break;
       case "rectangular-bar":
-        productArea = (this.width / 10) * (this.tickness / 10) * 100;
+        productArea = (this.second / 10) * (this.first / 10) * 100;
         break;
       case "coils":
-        productArea = (this.width / 10) * (this.tickness / 10) * 100;
+        productArea = (this.second / 10) * (this.first / 10) * 100;
         break;
       case "profile-L":
         productArea =
-          ((this.width / 10) * (this.tickness / 10) +
-            (this.width / 10 - this.tickness / 10) * (this.tickness / 10)) *
+          ((this.second / 10) * (this.first / 10) +
+            (this.second / 10 - this.first / 10) * (this.second / 10)) *
           100;
         break;
       case "profile-U":
         productArea =
-          ((this.width / 10) * (this.tickness / 10) +
-            (this.width / 10) * (this.tickness / 10) +
-            ((this.width - this.tickness * 2) / 10) * (this.tickness / 10)) *
+          ((this.second / 10) * (this.first / 10) +
+            (this.second / 10) * (this.first / 10) +
+            ((this.second - this.first * 2) / 10) * (this.first / 10)) *
           100;
         break;
       case "billet":
         productArea =
-          (Math.pow(Number(this.diameter) + 1.58, 2) * 0.0035343) / 0.0087;
+          (Math.pow(Number(this.first) + 1.58, 2) * 0.0035343) / 0.0087;
         break;
       case "plug":
         productArea =
-          ((Math.pow(Number(this.diameter) + 1.58, 2) -
-            Math.pow(Number(this.tickness - 1.58), 2)) *
+          ((Math.pow(Number(this.second) + 1.58, 2) -
+            Math.pow(Number(this.first - 1.58), 2)) *
             0.0035343) /
           0.0087;
         break;
       case "square-tube":
-        productArea = (this.width * 2 - this.tickness * 2) * 2 * this.tickness;
+        productArea = (this.second * 2 - this.first * 2) * 2 * this.first;
         break;
       case "round-tube":
         productArea =
-          ((Math.pow(this.diameter / 10, 2) -
-            Math.pow(Number(this.diameter - this.tickness * 2) / 10, 2)) *
+          ((Math.pow(this.second / 10, 2) -
+            Math.pow(Number(this.second - this.first * 2) / 10, 2)) *
             0.212058) /
           0.0027;
         break;
       case "rectangular-tube":
         productArea =
-          (Number(this.width) + Number(this.diameter) - this.tickness * 2) *
+          (Number(this.second) + Number(this.third) - this.first * 2) *
           2 *
-          this.tickness;
+          this.first;
         break;
       default:
         alert("Erro ao Calcular os Quantitativos");
@@ -187,45 +188,28 @@ class WeightCalculator {
   }
 }
 
-function handleCalculationWeight(product) {
-  const material = selectedMaterial.type;
-  const width = Number(document.querySelector("." + product + "-width")?.value);
-  const diameter = Number(
-    document.querySelector("." + product + "-diameter")?.value
-  );
-  const length = Number(
-    document.querySelector("." + product + "-length")?.value
-  );
-  const tickness = Number(
-    document.querySelector("." + product + "-tickness")?.value
-  );
+function weightCalulation() {
+  const fields = document.querySelectorAll(".input");
+  const [first, second, third] = fields;
 
-  utilizedMeasures = [
-    { type: "width", value: width },
-    { type: "diameter", value: diameter },
-    { type: "length", value: length },
-    { type: "tickness", value: tickness },
-  ];
-
-  if (tickness > width) {
-    document.getElementById(
-      `show-result-${product}`
-    ).innerHTML = `A largura deve ser maior que a espessura!`;
-    return;
-  }
+  // if (tickness > width) {
+  //   document.getElementById(
+  //     `show-result-${product}`
+  //   ).innerHTML = `A largura deve ser maior que a espessura!`;
+  //   return;
+  // }
 
   const newBar = new WeightCalculator(
-    product,
-    material,
-    width,
-    diameter,
-    length,
-    tickness
+    selectedProduct.type,
+    selectedProduct.material,
+    first.value,
+    second?.value,
+    third?.value
   );
 
-  document.getElementById(
-    `show-result-${product}`
-  ).innerHTML = `<b>Peso total: ${newBar.weightCalc(product)} Kg</b>`;
+  document.querySelector(".result").innerHTML = `<b>${newBar.weightCalc(
+    selectedProduct.type
+  )} Kg</b>`;
 }
 
 function handleSelectProduct(product) {
@@ -346,11 +330,11 @@ function hiddenNonExistentProducts(material) {
   for (metal of metals) {
     if (metal.material == material) {
       for (product of metal.nonExistentProducts) {
-        try{
+        try {
           document
-          .querySelector(`.${product}`)
-          .setAttribute("class", `hidden ${product}`);
-        }catch(ex){
+            .querySelector(`.${product}`)
+            .setAttribute("class", `hidden ${product}`);
+        } catch (ex) {
           continue;
         }
       }
@@ -387,6 +371,7 @@ function createMeasurementFields(product) {
 
         const input = document.createElement("input");
         input.setAttribute("class", `${type.fields[field]} input`);
+        input.onchange = weightCalulation;
 
         tableData.appendChild(paragraph);
         tableData.appendChild(input);
