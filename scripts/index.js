@@ -226,6 +226,7 @@ function handleSelectProduct(product) {
     material: selectedMaterial.type,
   };
   addingAttributeInProduct();
+  clearResult();
   changeProductImage(product);
   createMeasurementFields(product);
 }
@@ -404,16 +405,6 @@ function removeFields() {
   }
 }
 
-function clearFields() {
-  const product = checkOpenedNav.openedNav.barTypeOpened;
-  for (measure of utilizedMeasures) {
-    if (measure.value >= 0) {
-      try {
-        document.querySelector("." + product + "-" + measure.type).value = "";
-      } catch (error) {
-        return;
-      }
-    }
-  }
-  document.getElementById(`show-result-${product}`).innerHTML = "";
+function clearResult() {
+  document.querySelector(`.result`).innerHTML = "";
 }
