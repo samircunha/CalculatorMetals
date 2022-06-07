@@ -235,7 +235,8 @@ function validateTicknessAsSmallerSize(validate, validator){
 }
 
 function ticknessSizeInvalid(field){
-  const biggerField = field.className.split(' ')[2]
+  const biggerField = field.className.split(' ')[2];
+  clearResult();
   window.alert(`A Espessura deve ser menor que ${biggerField}!`);
 }
 
