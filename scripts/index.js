@@ -224,9 +224,47 @@ class WeightCalculator {
   }
 }
 
+function validateTicknessAsSmallerSize(validate, validator){
+  const isTickness = validate.className.split(' ')[2];
+  if (isTickness === 'Espessura' && validator.value != ''){
+    const isWidth = validator.className.split(' ')[2];
+    if((isWidth === 'Largura' || isWidth === 'Diâmetro' || isWidth === 'Lado')  && validator.value <= validate.value)
+      return false;
+  }
+  return true;
+}
+
+function ticknessSizeInvalid(field){
+  const biggerField = field.className.split(' ')[2]
+  window.alert(`A Espessura deve ser menor que ${biggerField}!`);
+}
+
+function validateIsANumber(field){
+  if(field != undefined && field.value != ''){
+    const isNumber = Number(field.value);
+    if (isNaN(isNumber)){
+      console.log(field.value)
+      field.value = '';
+      field.placeholder = 'Digite apenas números.'
+      return false;
+    } 
+  }
+  return true;
+}
+
 function weightCalulation() {
   const fields = document.querySelectorAll(".input");
   const [first, second, third] = fields;
+
+  fields.forEach(field => {
+    validateIsANumber(field);
+  });
+
+  const isTicknessSizeValid = validateTicknessAsSmallerSize(first, second);
+  if(!isTicknessSizeValid){
+    ticknessSizeInvalid(second);
+    return;
+  }
 
   const newBar = new WeightCalculator(
     selectedProduct.type,
@@ -369,6 +407,7 @@ function hiddenNonExistentProducts(material) {
   }
 }
 
+// Muda a imagem 3d.
 function changeProductImage(type) {
   const img = document.querySelector(`.img3d`);
   for ({ product } of allProducts) {
@@ -383,59 +422,103 @@ function removeProductImage() {
   img.src = ``;
 }
 
+// LIMPA O CAMPO DO RESULTADO QUANDO TROCA DE PRODUTO.
+function clearResult() {
+  const result = document.querySelector(`.result`)
+  if(result){
+    result.innerText = '';
+  } else {
+    return;
+  }
+}
+
+// Funclções que criam os campos para cálculo do peso dos materiais na área 'calcule por medidas'.
+// INÍCIO.
 function createMeasurementFields(product) {
   removeFields();
   for (type of allProducts) {
     if (type.product == product) {
+      const tableBody = document.getElementById('table-body');
       for (let field = 0; field < type.fields.length; field++) {
-        const tableData = document.getElementById(
-          `table-data-${type.fields[field]}`
-        );
-
-        const paragraph = document.createElement("p");
-        paragraph.innerText = `${type.fields[field]} (mm)`;
-        paragraph.id = type.fields[field];
-
-        const input = document.createElement("input");
-        input.setAttribute("class", `${type.fields[field]} input`);
-        input.onchange = weightCalulation;
-
-        tableData.appendChild(paragraph);
-        tableData.appendChild(input);
+        const trMeasures = createMeasuresFields(type.fields[field]);
+        tableBody.appendChild(trMeasures);
       }
+      const trResult = createResultField('result');
+      tableBody.appendChild(trResult);
     }
   }
+}
+
+function createTableRow(){
+  const tr = document.createElement("tr");
+  return tr;
+}
+
+function createTableData(field){
+  const td = document.createElement("td");
+  td.id = `table-data-${field}`
+  return td;
+}
+
+function createParagraphForMeasures(field){
+  const paragraph = document.createElement("p");
+  paragraph.innerText = `${field} (mm)`;
+  paragraph.id = field;
+  return paragraph;
+}
+
+function createInputForMeasures(field){
+  const input = document.createElement("input");
+  input.className = `${field} input`;
+  input.onchange = weightCalulation;
+  return input;
+}
+
+function createParagraphForResult(){
+  const paragraph = document.createElement("p");
+  paragraph.innerText = `Peso por metro`;
+  return paragraph;
+}
+
+function createDivForResult(className){
+  const div = document.createElement("div");
+  div.className = className;
+  return div;
+}
+
+function createMeasuresFields(field){
+  const tr = createTableRow();
+  const td = createTableData(field);
+  const paragraph = createParagraphForMeasures(field);
+  td.appendChild(paragraph);
+  const input = createInputForMeasures(field);
+  td.appendChild(input);
+  tr.appendChild(td);
+  return tr;
+}
+
+function createResultField(field){
+  const tr = createTableRow();
+  const td = createTableData(field);
+  const paragraph = createParagraphForResult();
+  td.appendChild(paragraph);
+  const div= createDivForResult(field);
+  td.appendChild(div);
+  tr.appendChild(td);
+  return tr;
 }
 
 function removeFields() {
-  const fieldsForRemove = [
-    "E - Espessura",
-    "L - Largura",
-    "C - Comprimento",
-    "D - Diâmetro",
-    "Di - Diâmetro Interno",
-    "De - Diâmetro Externo",
-    "L1 - Lado Maior",
-    "L2 - Lado Menor",
-  ];
-  for (field of fieldsForRemove) {
-    const tableData = document.getElementById(`table-data-${field}`);
+  const tableBody = document.getElementById('table-body');
+  const tableRows = document.querySelectorAll('tr');
 
-    const paragraph = document.getElementById(`${field}`);
-    const input = document.getElementsByClassName(`${field}`);
-
-    if (paragraph) {
-      tableData.removeChild(paragraph);
-      tableData.removeChild(input[0]);
-    }
-  }
+  tableRows.forEach(row => {
+    tableBody.removeChild(row);
+  })
 }
+// FIM.
 
-function clearResult() {
-  document.querySelector(`.result`).innerHTML = "";
-}
-
-// Funcões para criar os formatos no HTML. 
+// Funcões para criar os formatos na área "escolha o formato". 
 // INÍCIO
 function creatingFormats() {
   const container = document.querySelector(".formats-options");

@@ -15,117 +15,32 @@
         <div class="materials-container">
             <h2>Escolha o <span>Material</span> </h2>
             <div class='material-button'>
-                <button class='material-button__buttons button-acoinox' onclick='handleSelectMaterial("acoinox")'>Aço
-                    Inox</button>
+                <a href="#formats">
+                    <button class='material-button__buttons button-acoinox'
+                        onclick='handleSelectMaterial("acoinox")'>Aço
+                        Inox</button>
+                </a>
+                <a href="#formats">
                 <button class='material-button__buttons button-aluminio'
                     onclick='handleSelectMaterial("aluminio")'>Alumínio</button>
+                </a>
+                <a href="#formats">
                 <button class='material-button__buttons button-bronze'
                     onclick='handleSelectMaterial("bronze")'>Bronze</button>
-                <button class='material-button__buttons button-cobre' onclick='handleSelectMaterial("cobre")'>Cobre</button>
-                <button class='material-button__buttons button-latao' onclick='handleSelectMaterial("latao")'>Latão</button>
+                </a>
+                <a href="#formats">
+                <button class='material-button__buttons button-cobre'
+                    onclick='handleSelectMaterial("cobre")'>Cobre</button>
+                </a>
+                <a href="#formats">
+                <button class='material-button__buttons button-latao'
+                    onclick='handleSelectMaterial("latao")'>Latão</button>
+                </a>
             </div>
         </div>
-        <div class='formats-container'>
+        <div class='formats-container' id="formats">
             <h2>Escolha o <span>Formato</span> </h2>
             <div class='formats-options'>
-                <!-- <div class='product-structure square-bar'>
-                    <button class='product-button square-bar__head'
-                        onclick="handleSelectProduct('square-bar')">
-                        <img class='square-bar__head__image' src='./assets/barra-quadrada.png'>
-                        <p class='square-bar__head__description'>Barra Quadrada</p>
-                    </button>
-                </div>
-                <div class='product-structure round-bar'>
-                    <button class='product-button round-bar__head'
-                        onclick="handleSelectProduct('round-bar')">
-                        <img class='round-bar__head__image' src='./assets/barra-redonda.png'>
-                        <p class='round-bar__head__description'>Barra Redonda</p>
-                    </button>
-                </div>
-                <div class='product-structure rectangular-bar'>
-                    <button class='product-button rectangular-bar__head'
-                        onclick="handleSelectProduct('rectangular-bar')">    
-                        <img class='rectangular-bar__head__image' src='./assets/barra-retangular.png'>
-                        <p class='rectangular-bar__head__description'>Barra Retangular</p>
-                    </button>
-                </div>
-                <div class='product-structure hexagonal-bar'>
-                    <button class='product-button hexagonal-bar__head'
-                    onclick="handleSelectProduct('hexagonal-bar')">
-                        <img class='hexagonal-bar__head__image' src='./assets/barra-sextavada.png'>
-                        <p class='hexagonal-bar__head__description'>Barra Sextavada</p>
-                    </button>
-                </div>
-                <div class='product-structure coils'>
-                    <button class='product-button coils__head'
-                    onclick="handleSelectProduct('coils')">
-                        <img class='coils__head__image' src='./assets/bobinas.png'>
-                        <p class='coils__head__description'>Bobina</p>
-                    </button>
-                </div>
-                <div class='product-structure plug'>
-                    <button class='product-button plug__head'
-                    onclick="handleSelectProduct('plug')">
-                        <img class='plug__head__image' src='./assets/buchas.png'>
-                        <p class='plug__head__description'>Bucha</p>
-                    </button>
-                </div>
-                <div class='product-structure square-plate'>
-                    <button class='product-button square-plate__head'
-                    onclick="handleSelectProduct('square-plate')">
-                        <img class='square-plate__head__image' src='./assets/chapa.png'>
-                        <p class='square-plate__head__description'>Chapa</p>
-                    </button>
-                </div>
-                <div class='product-structure checkered-plate'>
-                    <button class='product-button checkered-plate__head'
-                    onclick="handleSelectProduct('checkered-plate')">
-                        <img class='checkered-plate__head__image' src='./assets/chapa-xadrez.png'>
-                        <p class='checkered-plate__head__description'>Chapa Xadrez</p>
-                    </button>
-                </div>
-                <div class='product-structure profile-L'>
-                    <button class='product-button profile-L__head'
-                    onclick="handleSelectProduct('profile-L')">
-                        <img class='profile-L__head__image' src='./assets/perfil-L.png'>
-                        <p class='profile-L__head__description'>Perfil em L Abas Iguais</p>
-                    </button>
-                </div>
-                <div class='product-structure profile-U'>
-                    <button class='product-button profile-U__head'
-                    onclick="handleSelectProduct('profile-U')">
-                        <img class='profile-U__head__image' src='./assets/perfil-U.png'>
-                        <p class='profile-U__head__description'>Perfil em U Abas Iguais</p>
-                    </button>
-                </div>
-                <div class='product-structure billet'>
-                    <button class='product-button billet__head'
-                    onclick="handleSelectProduct('billet')">
-                        <img class='billet__head__image' src='./assets/tarugo.png'>
-                        <p class='billet__head__description'>Tarrugo</p>
-                    </button>
-                </div>
-                <div class='product-structure square-tube'>
-                    <button class='product-button square-tube__head'
-                    onclick="handleSelectProduct('square-tube')">
-                        <img class='square-tube__head__image' src='./assets/tubo-quadrado.png'>
-                        <p class='square-tube__head__description'>Tubo Quadrada</p>
-                    </button>
-                </div>
-                <div class='product-structure round-tube'>
-                    <button class='product-button round-tube__head'
-                    onclick="handleSelectProduct('round-tube')">
-                        <img class='round-tube__head__image' src='./assets/tubo-redondo.png'>
-                        <p class='round-tube__head__description'>Tubo Redondo</p>
-                    </button>
-                </div>
-                <div class='product-structure rectangular-tube'>
-                    <button class='product-button rectangular-tube__head'
-                    onclick="handleSelectProduct('rectangular-tube')">
-                        <img class='rectangular-tube__head__image' src='./assets/tubo-retangular.png'>
-                        <p class='rectangular-tube__head__description'>Tubo Retangular</p>
-                    </button>
-                </div> -->
             </div>
         </div>
         <div class="measurements-container" id="measurements-container">
@@ -135,52 +50,6 @@
             </div>
             <table>
                 <tbody id="table-body">
-                    <tr>
-                        <td id="table-data-E - Espessura"> 
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-L - Largura">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-C - Comprimento">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-D - Diâmetro">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-Di - Diâmetro Interno">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-De - Diâmetro Externo">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-L1 - Lado Maior">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="table-data-L2 - Lado Menor">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Peso por metro</p>
-                            <div class='result'></div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
