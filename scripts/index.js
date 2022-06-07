@@ -1,38 +1,74 @@
 let selectedProduct = { button: "", text: "", type: "", material: "" };
 let selectedMaterial = { button: "", type: "" };
-let checkOpenedNav = {
-  status: "close",
-  openedNav: { classNavOpened: "", barTypeOpened: "" },
-};
-let utilizedMeasures = [];
 const allProducts = [
-  { product: "square-bar", fields: ["L - Largura"] },
-  { product: "round-bar", fields: ["D - Diâmetro"] },
-  { product: "rectangular-bar", fields: ["E - Espessura", "L - Largura"] },
-  { product: "hexagonal-bar", fields: ["D - Diâmetro"] },
-  { product: "coils", fields: ["E - Espessura", "L - Largura"] },
+  {
+    product: "square-bar",
+    fields: ["L - Largura"],
+    translateName: "Barra Quadrada",
+  },
+  {
+    product: "round-bar",
+    fields: ["D - Diâmetro"],
+    translateName: "Barra Redonda",
+  },
+  {
+    product: "rectangular-bar",
+    fields: ["E - Espessura", "L - Largura"],
+    translateName: "Barra Retangular",
+  },
+  {
+    product: "hexagonal-bar",
+    fields: ["D - Diâmetro"],
+    translateName: "Barra Sextavada",
+  },
+  {
+    product: "coils",
+    fields: ["E - Espessura", "L - Largura"],
+    translateName: "Bobina",
+  },
   {
     product: "plug",
     fields: ["Di - Diâmetro Interno", "De - Diâmetro Externo"],
+    translateName: "Bucha",
   },
   {
     product: "square-plate",
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
+    translateName: "Chapa",
   },
   {
     product: "checkered-plate",
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
+    translateName: "Chapa Xadrez",
   },
-  { product: "profile-L", fields: ["E - Espessura", "L - Largura"] },
-  { product: "profile-U", fields: ["E - Espessura", "L - Largura"] },
-  { product: "billet", fields: ["D - Diâmetro"] },
-  { product: "square-tube", fields: ["E - Espessura", "L - Largura"] },
-  { product: "round-tube", fields: ["E - Espessura", "D - Diâmetro"] },
+  {
+    product: "profile-L",
+    fields: ["E - Espessura", "L - Largura"],
+    translateName: "Perfil L",
+  },
+  {
+    product: "profile-U",
+    fields: ["E - Espessura", "L - Largura"],
+    translateName: "Perfil U",
+  },
+  { product: "billet", fields: ["D - Diâmetro"], translateName: "Tarugo" },
+  {
+    product: "square-tube",
+    fields: ["E - Espessura", "L - Largura"],
+    translateName: "Tubo Quadrado",
+  },
+  {
+    product: "round-tube",
+    fields: ["E - Espessura", "D - Diâmetro"],
+    translateName: "Tubo Redondo",
+  },
   {
     product: "rectangular-tube",
     fields: ["E - Espessura", "L1 - Lado Maior", "L2 - Lado Menor"],
+    translateName: "Tubo Retangular",
   },
 ];
+
 const metals = [
   {
     material: "aluminio",
@@ -91,13 +127,13 @@ const metals = [
 const pi = 3.14;
 
 window.addEventListener("DOMContentLoaded", () => {
+  creatingFormats();
   for ({ product } of allProducts) {
     document
       .querySelector(`.${product}`)
       .setAttribute("class", `hidden ${product}`);
   }
 });
-
 class WeightCalculator {
   constructor(type, material, first, second, third) {
     (this.type = type),
@@ -192,13 +228,6 @@ function weightCalulation() {
   const fields = document.querySelectorAll(".input");
   const [first, second, third] = fields;
 
-  // if (tickness > width) {
-  //   document.getElementById(
-  //     `show-result-${product}`
-  //   ).innerHTML = `A largura deve ser maior que a espessura!`;
-  //   return;
-  // }
-
   const newBar = new WeightCalculator(
     selectedProduct.type,
     selectedProduct.material,
@@ -207,9 +236,9 @@ function weightCalulation() {
     third?.value
   );
 
-  document.querySelector(".result").innerHTML = `<b>${newBar.weightCalc(
+  document.querySelector(".result").innerHTML = `<strong>${newBar.weightCalc(
     selectedProduct.type
-  )} Kg</b>`;
+  )} Kg</strong>`;
 }
 
 function handleSelectProduct(product) {
@@ -226,6 +255,7 @@ function handleSelectProduct(product) {
     material: selectedMaterial.type,
   };
   addingAttributeInProduct();
+  clearResult();
   changeProductImage(product);
   createMeasurementFields(product);
 }
@@ -316,9 +346,6 @@ function selectingMaterialProducts(material) {
 }
 
 function showAllProducts() {
-  if (checkOpenedNav.openedNav.barTypeOpened != "") {
-    clearFields();
-  }
   for ({ product } of allProducts) {
     document
       .querySelector(`.${product}`)
@@ -404,16 +431,74 @@ function removeFields() {
   }
 }
 
-function clearFields() {
-  const product = checkOpenedNav.openedNav.barTypeOpened;
-  for (measure of utilizedMeasures) {
-    if (measure.value >= 0) {
-      try {
-        document.querySelector("." + product + "-" + measure.type).value = "";
-      } catch (error) {
-        return;
-      }
-    }
-  }
-  document.getElementById(`show-result-${product}`).innerHTML = "";
+function clearResult() {
+  document.querySelector(`.result`).innerHTML = "";
 }
+
+// Funcões para criar os formatos no HTML. 
+// INÍCIO
+function creatingFormats() {
+  const container = document.querySelector(".formats-options");
+  allProducts.map((product) => {
+    const productStructure = createProductStructure(product);
+    container.appendChild(productStructure);
+  });
+}
+function createProductStructure(product) {
+  const paragraph = createProductParagraph(
+    product.product,
+    product.translateName
+  );
+  const image = createProductImage(product.product, product.translateName);
+  const button = createProductButton(product.product);
+  const anchor = createProductAnchor();
+  const div = createProductDiv(product.product);
+  const productStructure = organizingProductStructure(
+    div,
+    anchor,
+    button,
+    image,
+    paragraph
+  );
+  return productStructure;
+}
+function createProductDiv(productName) {
+  const divStructure = document.createElement("div");
+  divStructure.setAttribute("class", `product-structure ${productName}`);
+  return divStructure;
+}
+
+function createProductAnchor() {
+  const anchorStructure = document.createElement('a');
+  anchorStructure.href = '#measurements-container';
+  return anchorStructure;
+}
+
+function createProductButton(productName) {
+  const buttonStructure = document.createElement("button");
+  buttonStructure.setAttribute("class", `product-button ${productName}__head`);
+  buttonStructure.addEventListener('click', ()=>{
+    handleSelectProduct(productName)
+  }) 
+  return buttonStructure;
+}
+function createProductImage(productName, translateProductName) {
+  const imageStructure = document.createElement("img");
+  imageStructure.setAttribute("class", `${productName}__head__image`);
+  imageStructure.setAttribute("src", `./assets/${translateProductName}.png`);
+  return imageStructure;
+}
+function createProductParagraph(productName, translateProductName) {
+  const paragraphStructure = document.createElement("p");
+  paragraphStructure.setAttribute("class", `${productName}__head__description`);
+  paragraphStructure.innerText = translateProductName;
+  return paragraphStructure;
+}
+function organizingProductStructure(div, anchor, button, image, paragraph) {
+  button.appendChild(image);
+  button.appendChild(paragraph);
+  div.appendChild(button);
+  anchor.appendChild(div);
+  return anchor;
+}
+// FIM

@@ -1,8 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
 section{
   display: flex;
   width: 100vw;
@@ -26,6 +21,10 @@ h2{
 span{
   font-size: 32px;
   font-weight: 600;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*Materials styles  */
@@ -129,6 +128,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
   background-color:#1D9DC4;
   color: white;
+  border: none;
 }
 
 /* hidden product body styles */
