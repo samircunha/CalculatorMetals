@@ -116,19 +116,19 @@ const allProducts = [
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
     translateName: "Chapa",
     aluminio: ({first, second, third}) => {
-      const weight = first * second * third * 0.0027;
+      const weight = (first * second * third * 0.0027)/1000;
       return weight;
     },
     latao: ({first, second, third}) => {
-      const weight = first * second * third * 0.0085;
+      const weight = (first * second * third * 0.0085)/1000;
       return weight;
     },
     cobre: ({first, second, third}) => {
-      const weight = first * second * third * 0.0089;
+      const weight = (first * second * third * 0.0089)/1000;
       return weight;
     },  
     acoinox: ({first, second, third}) => {
-      const weight = first * second * third * 0.0079;
+      const weight = (first * second * third * 0.0079)/1000;
       return weight;
     },  
   },
@@ -137,19 +137,19 @@ const allProducts = [
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
     translateName: "Chapa Xadrez",
     aluminio: ({first, second, third}) => {
-      const weight = first * second * third * 0.0027;
+      const weight = (first * second * third * 0.0027)/1000;
       return weight;
     },
     latao: ({first, second, third}) => {
-      const weight = first * second * third * 0.0085;
+      const weight = (first * second * third * 0.0085)/1000;
       return weight;
     },
     cobre: ({first, second, third}) => {
-      const weight = first * second * third * 0.0089;
+      const weight = (first * second * third * 0.0089)/1000;
       return weight;
     }, 
     acoinox: ({first, second, third}) => {
-      const weight = first * second * third * 0.0079;
+      const weight = (first * second * third * 0.0079)/1000;
       return weight;
     }, 
   },
@@ -158,7 +158,7 @@ const allProducts = [
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Perfil L",
     aluminio: ({first, second}) => {
-      const weight = (2 * second * first - Math.pow(first, 2)) * 0.002698;
+      const weight = (2 * second * first - Math.pow(first, 2)) * 0.0027;
       return weight;
     },  
   },
@@ -328,9 +328,10 @@ function validateTicknessAsSmallerSize(validate, validator) {
   const isTickness = validate.className.split(" ")[2];
   if (isTickness === "Espessura" && validator.value != "") {
     const isWidth = validator.className.split(" ")[2];
+    console.log(validate, validator)
     if (
       (isWidth === "Largura" || isWidth === "Diâmetro" || isWidth === "Lado") &&
-      validator.value <= validate.value
+      Number(validator.value) <= Number(validate.value)
     )
       return false;
   }
