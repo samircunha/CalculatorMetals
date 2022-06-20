@@ -89,6 +89,7 @@ a {
 .img-3d-container{
   display: flex;
   justify-content: center;
+  margin-top: -20px
 }
 
 .img3d{
@@ -99,12 +100,29 @@ a {
   font-weight: 600;
 }
 
+/* ajustes de tamanho da table */
+table{
+  margin-top: -5px  
+}
+
+tr{
+  transform: translateY(-20px)
+}
+
+tr p {
+  height: 12px
+}
+
+tr input, tr div {
+  margin-top: -5px
+}
+
 .input{
   border: none;
   background-color:#CCCCCC;
   border-radius: 3px;
   width: 20vw;
-  padding: 12px;
+  padding: 10px;
   box-sizing: border-box;
 }
 

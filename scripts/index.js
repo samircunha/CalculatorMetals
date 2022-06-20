@@ -5,19 +5,19 @@ const allProducts = [
     product: "square-bar",
     fields: ["L - Largura"],
     translateName: "Barra Quadrada",
-    aluminio: ({first}) => {
+    aluminio: ({ first }) => {
       const weight = first * first * 0.0027;
       return weight;
     },
-    latao: ({first}) => {
+    latao: ({ first }) => {
       const weight = first * first * 0.0085;
       return weight;
     },
-    cobre: ({first}) => {
+    cobre: ({ first }) => {
       const weight = first * first * 0.0089;
       return weight;
     },
-    acoinox: ({first}) => {
+    acoinox: ({ first }) => {
       const weight = first * first * 0.0079;
       return weight;
     },
@@ -26,191 +26,190 @@ const allProducts = [
     product: "round-bar",
     fields: ["D - Diâmetro"],
     translateName: "Barra Redonda",
-    aluminio: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.0021206;
+    aluminio: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.0021206;
       return weight;
     },
-    latao: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.0066759;
+    latao: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.0066759;
       return weight;
     },
-    cobre: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.00699004;
+    cobre: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.00699004;
       return weight;
-    },  
-    acoinox: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.00620466;
+    },
+    acoinox: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.00620466;
       return weight;
-    },  
+    },
   },
   {
     product: "rectangular-bar",
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Barra Retangular",
-    aluminio: ({first, second}) => {
+    aluminio: ({ first, second }) => {
       const weight = first * second * 0.0027;
       return weight;
     },
-    latao: ({first, second}) => {
+    latao: ({ first, second }) => {
       const weight = first * second * 0.0085;
       return weight;
     },
-    cobre: ({first, second}) => {
+    cobre: ({ first, second }) => {
       const weight = first * second * 0.0089;
       return weight;
-    },  
-    acoinox: ({first, second}) => {
+    },
+    acoinox: ({ first, second }) => {
       const weight = first * second * 0.0079;
       return weight;
-    },  
+    },
   },
   {
     product: "hexagonal-bar",
     fields: ["D - Diâmetro"],
     translateName: "Barra Sextavada",
-    aluminio: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.0023382;
+    aluminio: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.0023382;
       return weight;
     },
-    latao: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.007361;
+    latao: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.007361;
       return weight;
-    },   
-    acoinox: ({first}) => {
-      const weight = (Math.pow(first, 2)) * 0.0068414;
+    },
+    acoinox: ({ first }) => {
+      const weight = Math.pow(first, 2) * 0.0068414;
       return weight;
-    },   
+    },
   },
   {
     product: "coils",
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Bobina",
-    aluminio: ({first, second}) => {
+    aluminio: ({ first, second }) => {
       const weight = first * second * 0.0027;
       return weight;
     },
-    latao: ({first, second}) => {
+    latao: ({ first, second }) => {
       const weight = first * second * 0.0085;
       return weight;
     },
-    cobre: ({first, second}) => {
+    cobre: ({ first, second }) => {
       const weight = first * second * 0.0089;
       return weight;
     },
-    acoinox: ({first, second}) => {
+    acoinox: ({ first, second }) => {
       const weight = first * second * 0.0079;
       return weight;
-    },  
+    },
   },
   {
     product: "plug",
-    fields: ["Di - Diâmetro Interno", "De - Diâmetro Externo"],
+    fields: ["De - Diâmetro Externo", "Di - Diâmetro Interno"],
     translateName: "Bucha",
-    bronze: ({first, second}) => {
-      const weight = (Math.pow(second + 1.58, 2) - Math.pow(first, 2)) * 0.0035344;
+    bronze: ({ first, second }) => {
+      const weight =
+        (Math.pow(first + 1.58, 2) - Math.pow(second, 2)) * 0.0035344;
       return weight;
-    },  
+    },
   },
   {
     product: "square-plate",
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
     translateName: "Chapa",
-    aluminio: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0027)/1000;
+    aluminio: ({ first, second, third }) => {
+      const weight = (first * second * third * 0.0027) / 1000;
       return weight;
     },
-    latao: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0085)/1000;
+    latao: ({ first, second, third }) => {
+      const weight = (first * second * third * 0.0085) / 1000;
       return weight;
     },
-    cobre: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0089)/1000;
+    cobre: ({ first, second, third }) => {
+      const weight = (first * second * third * 0.0089) / 1000;
       return weight;
-    },  
-    acoinox: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0079)/1000;
+    },
+    acoinox: ({ first, second, third }) => {
+      const weight = (first * second * third * 0.0079) / 1000;
       return weight;
-    },  
+    },
   },
   {
     product: "checkered-plate",
     fields: ["E - Espessura", "L - Largura", "C - Comprimento"],
     translateName: "Chapa Xadrez",
-    aluminio: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0027)/1000;
+    aluminio: ({ first, second, third }) => {
+      const weight = (first * second * third * 0.0027) / 1000;
       return weight;
     },
-    latao: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0085)/1000;
-      return weight;
-    },
-    cobre: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0089)/1000;
-      return weight;
-    }, 
-    acoinox: ({first, second, third}) => {
-      const weight = (first * second * third * 0.0079)/1000;
-      return weight;
-    }, 
   },
   {
     product: "profile-L",
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Perfil L",
-    aluminio: ({first, second}) => {
+    aluminio: ({ first, second }) => {
       const weight = (2 * second * first - Math.pow(first, 2)) * 0.0027;
       return weight;
-    },  
+    },
   },
   {
     product: "profile-U",
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Perfil U",
-    aluminio: ({first, second}) => {
-      const weight = (3 * second * first - (2 * Math.pow((first), 2))) * 0.0027;
+    aluminio: ({ first, second }) => {
+      const weight = (3 * second * first - 2 * Math.pow(first, 2)) * 0.0027;
       return weight;
-    }, 
+    },
   },
   {
     product: "billet",
     fields: ["D - Diâmetro"],
     translateName: "Tarugo",
-    bronze: ({first}) => {
+    bronze: ({ first }) => {
       const weight = Math.pow(first + 1.58, 2) * 0.0035344;
       return weight;
-    },  
+    },
   },
   {
     product: "square-tube",
     fields: ["E - Espessura", "L - Largura"],
     translateName: "Tubo Quadrado",
-    aluminio: ({first, second}) => {
-      const weight = (Math.pow(second, 2) - Math.pow((second - first - first), 2)) * 0.0027;
+    aluminio: ({ first, second }) => {
+      const weight =
+        (Math.pow(second, 2) - Math.pow(second - first - first, 2)) * 0.0027;
       return weight;
-    }, 
-    acoinox: ({first, second}) => {
-      const weight = (Math.pow(second, 2) - Math.pow((second - first - first), 2)) * 0.0079;
+    },
+    acoinox: ({ first, second }) => {
+      const weight =
+        (Math.pow(second, 2) - Math.pow(second - first - first, 2)) * 0.0079;
       return weight;
-    }, 
+    },
   },
   {
     product: "round-tube",
     fields: ["E - Espessura", "D - Diâmetro"],
     translateName: "Tubo Redondo",
-    aluminio: ({first, second}) => {
-      const weight = (Math.pow(second, 2) * 0.00212058) - (Math.pow((second - first - first), 2) * 0.00212058)
-      return weight;
-    }, 
-    latao: ({first, second}) => {
-      const weight = (Math.pow(second, 2) * 0.0066759) - (Math.pow((second - first - first), 2) * 0.0066759)
-      return weight;
-    }, 
-    cobre: ({first, second}) => {
-      const weight = (Math.pow(second, 2) * 0.00699004) - (Math.pow((second - first - first), 2) * 0.00699004)
+    aluminio: ({ first, second }) => {
+      const weight =
+        Math.pow(second, 2) * 0.00212058 -
+        Math.pow(second - first - first, 2) * 0.00212058;
       return weight;
     },
-    acoinox: ({first, second}) => {
-      const weight = (Math.pow(second, 2) * 0.00620466) - (Math.pow((second - first - first), 2) * 0.00620466)
+    latao: ({ first, second }) => {
+      const weight =
+        Math.pow(second, 2) * 0.0066759 -
+        Math.pow(second - first - first, 2) * 0.0066759;
+      return weight;
+    },
+    cobre: ({ first, second }) => {
+      const weight =
+        Math.pow(second, 2) * 0.00699004 -
+        Math.pow(second - first - first, 2) * 0.00699004;
+      return weight;
+    },
+    acoinox: ({ first, second }) => {
+      const weight =
+        Math.pow(second, 2) * 0.00620466 -
+        Math.pow(second - first - first, 2) * 0.00620466;
       return weight;
     },
   },
@@ -218,14 +217,18 @@ const allProducts = [
     product: "rectangular-tube",
     fields: ["E - Espessura", "L1 - Lado Maior", "L2 - Lado Menor"],
     translateName: "Tubo Retangular",
-    aluminio: ({first, second, third}) => {
-      const weight = (second * third * 0.0027) - ((second - first - first) * (third - first - first) * 0.0027);
+    aluminio: ({ first, second, third }) => {
+      const weight =
+        second * third * 0.0027 -
+        (second - first - first) * (third - first - first) * 0.0027;
       return weight;
-    }, 
-    acoinox: ({first, second, third}) => {
-      const weight = (second * third * 0.0079) - ((second - first - first) * (third - first - first) * 0.0079);
+    },
+    acoinox: ({ first, second, third }) => {
+      const weight =
+        second * third * 0.0079 -
+        (second - first - first) * (third - first - first) * 0.0079;
       return weight;
-    }, 
+    },
   },
 ];
 
@@ -261,6 +264,7 @@ const metals = [
       "plug",
       "square-tube",
       "rectangular-tube",
+      "checkered-plate",
     ],
   },
   {
@@ -271,12 +275,19 @@ const metals = [
       "billet",
       "plug",
       "square-tube",
+      "checkered-plate",
       "rectangular-tube",
     ],
   },
   {
     material: "acoinox",
-    nonExistentProducts: ["profile-L", "profile-U", "billet", "plug"],
+    nonExistentProducts: [
+      "profile-L",
+      "profile-U",
+      "billet",
+      "plug",
+      "checkered-plate",
+    ],
   },
 ];
 
@@ -297,30 +308,30 @@ class WeightCalculator {
       (this.third = Number(third));
   }
 
-  adjustNumberForResult(number){
-    if(number < 0){
-      return ''
-    } else if (number > 1000) {
-      number /= 1000;
-      return `<strong>${number.toLocaleString("pt-br")} T</strong>`;
-    } else if (number < 1) {
-      number *= 1000;
-      return `<strong>${number.toLocaleString("pt-br")} g</strong>`;
-    } else {
-      return `<strong>${number.toLocaleString("pt-br")} Kg</strong>`;
-    }
-  }
-
   weightCalc(productName) {
     let productArea;
-    allProducts.forEach(product => {
-      if (product.product == productName){
-        productArea = product[this.material]
+    allProducts.forEach((product) => {
+      if (product.product == productName) {
+        productArea = product[this.material];
       }
     });
-    
-    const barWeight = productArea({first: this.first, second: this.second, third: this.third});
-    return this.adjustNumberForResult(barWeight);
+
+    const barWeight = productArea({
+      first: this.first,
+      second: this.second,
+      third: this.third,
+    });
+    return `<strong>${barWeight.toLocaleString("pt-br", {
+      minimumFractionDigits: 3,
+    })} Kg/${
+      selectedProduct.type == "square-plate" ||
+      selectedProduct.type == "checkered-plate" ||
+      selectedProduct.type == "billet" ||
+      selectedProduct.type == "plug"
+        ? "pç"
+        : `m`
+    }
+    </strong>`;
   }
 }
 
@@ -328,7 +339,7 @@ function validateTicknessAsSmallerSize(validate, validator) {
   const isTickness = validate.className.split(" ")[2];
   if (isTickness === "Espessura" && validator.value != "") {
     const isWidth = validator.className.split(" ")[2];
-    console.log(validate, validator)
+    console.log(validate, validator);
     if (
       (isWidth === "Largura" || isWidth === "Diâmetro" || isWidth === "Lado") &&
       Number(validator.value) <= Number(validate.value)
@@ -344,14 +355,13 @@ function ticknessSizeInvalid(field) {
   window.alert(`A Espessura deve ser menor que ${biggerField}!`);
 }
 
-
 function changeComma(value) {
-  return value.replace(',', '.');
+  return value.replace(",", ".");
 }
 
 function validateIsANumber(field) {
   if (field != undefined && field.value != "") {
-    field.value = changeComma(field.value)
+    field.value = changeComma(field.value);
     const isNumber = Number(field.value);
     if (isNaN(isNumber)) {
       field.value = "";
@@ -384,7 +394,9 @@ function weightCalulation() {
     third?.value
   );
 
-  document.querySelector(".result").innerHTML = newBar.weightCalc(selectedProduct.type);
+  document.querySelector(".result").innerHTML = newBar.weightCalc(
+    selectedProduct.type
+  );
 }
 
 function handleSelectProduct(product) {
@@ -584,12 +596,18 @@ function createInputForMeasures(field) {
 
 function createParagraphForResult(isObs) {
   const paragraph = document.createElement("p");
-  if(isObs){
-    paragraph.innerText = 'OBS: Peças de 500mm'
-  } else{
-    paragraph.innerText = selectedProduct.type == 'square-plate' || selectedProduct.type == 'checkered-plate' || selectedProduct.type == 'billet' || selectedProduct.type == 'plug'  ? 'Peso por peça' : `Peso por metro`;
+  if (isObs) {
+    paragraph.innerText = "OBS: Peças de 500mm";
+  } else {
+    paragraph.innerText =
+      selectedProduct.type == "square-plate" ||
+      selectedProduct.type == "checkered-plate" ||
+      selectedProduct.type == "billet" ||
+      selectedProduct.type == "plug"
+        ? "Peso por peça"
+        : `Peso por metro`;
   }
-  
+
   return paragraph;
 }
 
@@ -617,7 +635,7 @@ function createResultField(field) {
   td.appendChild(paragraph);
   const div = createDivForResult(field);
   td.appendChild(div);
-  if(selectedProduct.type == 'billet' || selectedProduct.type == 'plug'){
+  if (selectedProduct.type == "billet" || selectedProduct.type == "plug") {
     const paragraphForObs = createParagraphForResult(true);
     td.appendChild(paragraphForObs);
   }
